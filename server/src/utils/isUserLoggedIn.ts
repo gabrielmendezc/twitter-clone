@@ -24,5 +24,5 @@ export const isUserLoggedIn = async (req: Request) => {
     return user!.username
   }
 
-  return 'gabriel'
+  return null
 }
