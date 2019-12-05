@@ -11,5 +11,7 @@ export const user = async (
     return null
   }
 
+  user.password = ''
+
   return user
 }
