@@ -1,8 +1,10 @@
-import { User } from '../entity/User'
+import { users } from './User/Query.GetAll'
+import { user } from './User/Query.GetOne'
+import { me } from './Me/Query.Me'
 
 export const Query = {
   hello: (): string => 'Hello Apollo! 🚀',
-  users: async (): Promise<Array<User>> => {
-    return User.find({ take: 10 })
-  }
+  users,
+  user,
+  me
 }

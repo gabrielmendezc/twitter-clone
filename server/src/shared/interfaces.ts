@@ -11,3 +11,7 @@ export interface ICreateUserArgs {
 export interface IApolloContext {
   user: User
 }
+
+export interface IGetOneQuery {
+  username: string
+}

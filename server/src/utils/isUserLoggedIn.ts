@@ -20,7 +20,9 @@ export const isUserLoggedIn = async (req: Request) => {
     )
 
     user = await User.findOne(decoded.id)
+
+    return user!.username
   }
 
-  return user
+  return 'gabriel'
 }
