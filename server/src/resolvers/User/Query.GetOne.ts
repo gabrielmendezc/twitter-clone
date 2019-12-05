@@ -1,10 +1,15 @@
 import { User } from '../../entity/User'
-import { IGetOneQuery } from '../../shared/interfaces'
+import { IGetOneQuery, IApolloContext } from '../../shared/interfaces'
 
 export const user = async (
   _,
-  { username }: IGetOneQuery
+  { username }: IGetOneQuery,
+  { user: currentUsername }: IApolloContext
 ): Promise<User | null> => {
+  if (!currentUsername) {
+    throw new Error('You are not logged in, please log in to proceed.')
+  }
+
   const user = await User.findOne({ where: { username } })
 
   if (!user) {

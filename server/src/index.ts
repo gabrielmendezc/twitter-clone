@@ -14,6 +14,7 @@ dotenv.config()
     resolvers,
     context: async ({ req }) => {
       const user = await isUserLoggedIn(req)
+
       return { user }
     }
   })
