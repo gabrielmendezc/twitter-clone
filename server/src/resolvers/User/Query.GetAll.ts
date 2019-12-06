@@ -4,9 +4,9 @@ import { IApolloContext } from '../../shared/interfaces'
 export const users = async (
   _,
   __,
-  { user: currentUsername }: IApolloContext
+  { user: currentUser }: IApolloContext
 ): Promise<Array<User>> => {
-  if (!currentUsername) {
+  if (!currentUser) {
     throw new Error('You are not logged in, please log in to proceed.')
   }
 

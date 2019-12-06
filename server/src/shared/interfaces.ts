@@ -9,7 +9,12 @@ export interface ICreateUserArgs {
 }
 
 export interface IApolloContext {
-  user: User
+  user: {
+    id: number
+    username: string
+    email: string
+    role: string
+  }
 }
 
 export interface IGetOneQuery {
@@ -20,6 +25,13 @@ export interface ILoginArgs {
   data: {
     username: string
     password: string
+  }
+}
+
+export interface IUpdateMe {
+  data: {
+    newUsername?: string
+    newEmail?: string
   }
 }
 

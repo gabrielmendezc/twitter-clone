@@ -21,8 +21,16 @@ export const isUserLoggedIn = async (req: Request) => {
 
     user = await User.findOne(decoded.id)
 
-    return user!.username
+    const userData = {
+      id: user!.id,
+      username: user!.username,
+      email: user!.email,
+      role: user!.role
+    }
+
+    return userData
   }
 
-  return null
+  // Change this return to null once front end is available
+  return { username: 'gabriel', email: 'gabriel@gabriel.com' }
 }

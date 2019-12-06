@@ -4,9 +4,9 @@ import { IGetOneQuery, IApolloContext } from '../../shared/interfaces'
 export const user = async (
   _,
   { username }: IGetOneQuery,
-  { user: currentUsername }: IApolloContext
+  { user: currentUser }: IApolloContext
 ): Promise<User | null> => {
-  if (!currentUsername) {
+  if (!currentUser) {
     throw new Error('You are not logged in, please log in to proceed.')
   }
 
