@@ -8,7 +8,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    register(data: RegisterInput): String!
+    register(data: RegisterInput): AuthResponse!
+    login(data: LoginInput): AuthResponse!
   }
 
   type User {
@@ -25,6 +26,16 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
+  }
+
+  input LoginInput {
+    username: String!
+    password: String!
+  }
+
+  type AuthResponse {
+    token: String!
+    user: User!
   }
 `
 

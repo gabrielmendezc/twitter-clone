@@ -1,4 +1,4 @@
-import { ICreateUserArgs } from '../../shared/interfaces'
+import { ICreateUserArgs, IAuthResponse } from '../../shared/interfaces'
 import { User } from '../../entity/User'
 import { validate } from 'class-validator'
 import jwt from 'jsonwebtoken'
@@ -7,7 +7,7 @@ import bcrypt from 'bcryptjs'
 export const register = async (
   _,
   { data: { username, email, password } }: ICreateUserArgs
-): Promise<string> => {
+): Promise<IAuthResponse> => {
   const hashedPassword = await bcrypt.hash(password, 12)
 
   const user = User.create({
@@ -26,5 +26,8 @@ export const register = async (
     expiresIn: '1h'
   })
 
-  return token
+  return {
+    token,
+    user
+  }
 }

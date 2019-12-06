@@ -15,3 +15,15 @@ export interface IApolloContext {
 export interface IGetOneQuery {
   username: string
 }
+
+export interface ILoginArgs {
+  data: {
+    username: string
+    password: string
+  }
+}
+
+export interface IAuthResponse {
+  token: string
+  user: User
+}
