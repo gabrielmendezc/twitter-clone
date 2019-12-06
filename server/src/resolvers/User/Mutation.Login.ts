@@ -33,7 +33,7 @@ export const login = async (
   })
 
   return {
-    token,
-    user
+    user,
+    token
   }
 }

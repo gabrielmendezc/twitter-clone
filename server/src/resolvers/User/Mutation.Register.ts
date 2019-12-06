@@ -27,7 +27,7 @@ export const register = async (
   })
 
   return {
-    token,
-    user
+    user,
+    token
   }
 }
