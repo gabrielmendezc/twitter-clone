@@ -1,14 +1,12 @@
 import React from 'react'
 import { useQuery } from 'react-apollo'
 import { GET_ME } from './queries'
-import GraphQLError from './components/Error/GraphQLError'
-import ServerError from './components/Error/ServerError'
 import useError from './hooks/useError'
 
 const App: React.FC = () => {
   const { loading, error, data } = useQuery(GET_ME)
 
-  const { errorInfo, Component } = useError(error)
+  const { errorInfo: _, Component } = useError(error)
 
   if (loading) return <h1>Loading...</h1>
   if (error) return Component
