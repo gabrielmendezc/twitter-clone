@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { useQuery } from 'react-apollo'
 import { GET_ME } from './queries'
 import useError from './hooks/useError'
+import Loader from './components/Loader'
 
-const App: React.FC = () => {
-  const { loading, error, data } = useQuery(GET_ME)
+const App: FC = () => {
+  const { loading, error, data } = useQuery(GET_ME, {
+    notifyOnNetworkStatusChange: true
+  })
 
-  const { errorInfo: _, Component } = useError(error)
+  const { errorInfo: _, Component: ErrorComponent } = useError(error)
 
-  if (loading) return <h1>Loading...</h1>
-  if (error) return Component
+  if (loading) return <Loader />
+  if (error) return ErrorComponent
 
   return (
     <div className="App">
