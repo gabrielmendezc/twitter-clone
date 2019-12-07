@@ -12,10 +12,10 @@ export const SpinnerWrapper = styled.div`
     position: absolute;
     width: 30px;
     height: 30px;
-    border: 3px solid #333;
+    border: 3px solid var(--dominant-clr);
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #333 transparent transparent transparent;
+    border-color: var(--dominant-clr) transparent transparent transparent;
   }
 
   & > div:nth-child(1) {

@@ -1,9 +1,9 @@
-import React, { FC, Fragment } from 'react'
-import { useQuery } from 'react-apollo'
+import React, { FC } from 'react'
+import { useQuery, useApolloClient } from 'react-apollo'
 import { GET_ME } from './queries'
 import useError from './hooks/useError'
 import Loader from './components/Loader'
-import { GlobalStyles } from './globalStyles'
+import Navbar from './components/Navbar'
 
 const App: FC = () => {
   const { loading, error, data } = useQuery(GET_ME, {
@@ -16,21 +16,9 @@ const App: FC = () => {
   if (error) return ErrorComponent
 
   return (
-    <Fragment>
-      <GlobalStyles />
-      <div className="App">
-        <header className="App-header">
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    </Fragment>
+    <div className="App">
+      <Navbar />
+    </div>
   )
 }
 
