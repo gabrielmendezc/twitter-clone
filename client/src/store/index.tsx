@@ -7,15 +7,9 @@ const client = new ApolloClient({
   cache,
   resolvers: {
     Mutation: {
-      updateAuthStatus: (root, args, ctx, info) => {
-        console.log(
-          `Root: ${root}
-           Args: ${args}
-           Context: ${ctx}
-           Info: ${info}
-          `
-        )
-        return null
+      updateAuthStatus: (root, { user }, ctx, info) => {
+        // What you return here is whats updated in the store
+        return user
       }
     }
   }
@@ -24,6 +18,7 @@ const client = new ApolloClient({
 // Setting initial *state*
 cache.writeData({
   data: {
+    isLoggedIn: !!localStorage.getItem('token'),
     user: null
   }
 })

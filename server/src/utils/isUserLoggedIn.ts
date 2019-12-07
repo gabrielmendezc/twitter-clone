@@ -32,6 +32,5 @@ export const isUserLoggedIn = async (req: Request) => {
   }
 
   // Change this return to null once front end login is available
-  return { username: 'gabriel', email: 'gabriel@gabriel.com' }
-  // return null
+  return null
 }

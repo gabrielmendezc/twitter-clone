@@ -3,8 +3,13 @@ import NavbarUnauth from './Unauth'
 import NavbarAuth from './Auth'
 
 const Navbar: FC = () => {
-  // Check if the user is logged in or not to display appropiate navbar
-  return <NavbarUnauth />
+  const appropiateNavbar = localStorage.getItem('token') ? (
+    <NavbarAuth />
+  ) : (
+    <NavbarUnauth />
+  )
+
+  return appropiateNavbar
 }
 
 export default Navbar
