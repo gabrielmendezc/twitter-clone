@@ -1,16 +1,6 @@
 import React from 'react'
-import gql from 'graphql-tag'
 import { useQuery } from 'react-apollo'
-
-const GET_ME = gql`
-  {
-    me {
-      id
-      email
-      username
-    }
-  }
-`
+import { GET_ME } from './queries'
 
 const App: React.FC = () => {
   const { loading, error, data } = useQuery(GET_ME)
