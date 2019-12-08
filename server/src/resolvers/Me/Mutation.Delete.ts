@@ -1,5 +1,6 @@
 import { User } from '../../entity/User'
 import { IApolloContext } from '../../shared/interfaces'
+import { AuthenticationError } from 'apollo-server-errors'
 
 export const deleteMe = async (
   _,
@@ -7,7 +8,9 @@ export const deleteMe = async (
   { user }: IApolloContext
 ): Promise<User | void> => {
   if (!user) {
-    throw new Error('You are not logged in, please log in to proceeed.')
+    throw new AuthenticationError(
+      'You are not logged in, please log in to proceeed.'
+    )
   }
 
   // return the deleted user ??

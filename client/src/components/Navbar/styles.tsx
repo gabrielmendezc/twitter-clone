@@ -22,10 +22,6 @@ export const NavbarAuth = styled.nav`
 
     li {
       display: inline;
-
-      &:last-of-type {
-        margin-top: 5px;
-      }
     }
 
     .searchbar {

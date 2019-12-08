@@ -14,23 +14,25 @@ export const isUserLoggedIn = async (req: Request) => {
   }
 
   if (token) {
-    const decoded: any = await promisify(jwt.verify)(
-      token,
-      process.env.JWT_SECRET as string
-    )
+    try {
+      const decoded: any = await promisify(jwt.verify)(
+        token,
+        process.env.JWT_SECRET as string
+      )
 
-    user = await User.findOne(decoded.id)
+      user = await User.findOne(decoded.id)
 
-    const userData = {
-      id: user!.id,
-      username: user!.username,
-      email: user!.email,
-      role: user!.role
+      const userData = {
+        id: user!.id,
+        username: user!.username,
+        email: user!.email,
+        role: user!.role
+      }
+      return userData
+    } catch {
+      return null
     }
-
-    return userData
   }
 
-  // Change this return to null once front end login is available
   return null
 }

@@ -1,5 +1,6 @@
 import { User } from '../../entity/User'
 import { IGetOneQuery, IApolloContext } from '../../shared/interfaces'
+import { AuthenticationError } from 'apollo-server-errors'
 
 export const user = async (
   _,
@@ -7,7 +8,9 @@ export const user = async (
   { user: currentUser }: IApolloContext
 ): Promise<User | null> => {
   if (!currentUser) {
-    throw new Error('You are not logged in, please log in to proceed.')
+    throw new AuthenticationError(
+      'You are not logged in, please log in to proceed.'
+    )
   }
 
   const user = await User.findOne({ where: { username } })

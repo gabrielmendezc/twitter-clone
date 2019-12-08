@@ -6,12 +6,13 @@ import useError from '../../hooks/useError'
 
 const HomeAuth: FC = () => {
   const { data, loading, error } = useQuery(GET_ME)
-  const { Component: ErrorComponent } = useError(error)
+  const { errorInfo, Component: ErrorComponent } = useError(error)
 
+  console.log(ErrorComponent)
   if (loading) return <Loader />
-  if (error) return ErrorComponent
-
-  console.log(data)
+  if (error) {
+    return ErrorComponent
+  }
 
   const {
     me: { username }

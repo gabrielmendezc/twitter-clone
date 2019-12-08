@@ -1,5 +1,6 @@
 import { User } from '../../entity/User'
 import { IUpdateMe, IApolloContext } from '../../shared/interfaces'
+import { AuthenticationError } from 'apollo-server-errors'
 
 export const updateMe = async (
   _,
@@ -7,7 +8,9 @@ export const updateMe = async (
   { user: currentUser }: IApolloContext
 ): Promise<User> => {
   if (!currentUser) {
-    throw new Error('You are not logged in, please log in to proceed.')
+    throw new AuthenticationError(
+      'You are not logged in, please log in to proceed.'
+    )
   }
 
   await User.update(
