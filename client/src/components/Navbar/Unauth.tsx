@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import * as SC from './styles'
+import Input from '../Input'
 
 const NavbarUnauth: FC = () => {
   return (
@@ -7,10 +8,10 @@ const NavbarUnauth: FC = () => {
       <h1>Website Logo</h1>
       <form id="login">
         <div className="form-group">
-          <input placeholder="Username" type="text" id="username" required />
+          <Input placeholder="Username" type="text" id="username" required />
         </div>
         <div className="form-group">
-          <input
+          <Input
             placeholder="Password"
             type="password"
             id="password"

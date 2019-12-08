@@ -135,15 +135,6 @@ export const NavbarUnauth = styled.header`
         display: flex;
         flex-direction: column;
         margin-right: 4em;
-
-        input {
-          padding: 0.85em;
-          border-radius: 3px;
-          background-color: white;
-          border: none;
-          outline-color: #e3a02f;
-          font-size: 1.5rem;
-        }
       }
     }
   }
