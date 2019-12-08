@@ -2,18 +2,20 @@ import React, { FC, useState, FormEvent } from 'react'
 import Input from '../Input'
 import * as SC from './styles'
 import { Link } from 'react-router-dom'
-import { useMutation } from 'react-apollo'
+import { useMutation, useApolloClient } from 'react-apollo'
 import { LOGIN } from '../../queries'
 import useError from '../../hooks/useError'
 import Loader from '../Loader'
 
 const HomeUnauth: FC = () => {
   const [login, { data, loading, error }] = useMutation(LOGIN)
+
   const { Component: ErrorComponent } = useError(error)
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   })
+  const client = useApolloClient()
 
   const { username, password } = formData
 
@@ -34,6 +36,14 @@ const HomeUnauth: FC = () => {
         <Loader width="60px" />
       </SC.SideEffectWrapper>
     )
+  }
+
+  if (data) {
+    const {
+      login: { token, user }
+    } = data
+    localStorage.setItem('token', token)
+    client.writeData({ data: { user, isLoggedIn: true } })
   }
 
   return (
