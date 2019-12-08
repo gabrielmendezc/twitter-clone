@@ -5,21 +5,13 @@ const cache = new InMemoryCache()
 const client = new ApolloClient({
   uri: '/graphql',
   cache,
-  resolvers: {
-    Mutation: {
-      updateAuthStatus: (root, { user }, ctx, info) => {
-        // What you return here is whats updated in the store
-        return user
-      }
-    }
-  }
+  resolvers: {}
 })
 
 // Setting initial *state*
 cache.writeData({
   data: {
-    isLoggedIn: !!localStorage.getItem('token'),
-    user: null
+    isLoggedIn: !!localStorage.getItem('token')
   }
 })
 
