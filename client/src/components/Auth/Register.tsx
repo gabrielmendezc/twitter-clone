@@ -5,6 +5,7 @@ import { useMutation, useApolloClient } from 'react-apollo'
 import { REGISTER } from '../../queries'
 import useError from '../../hooks/useError'
 import Loader from '../Loader'
+import GraphQLError from '../Error/GraphQLError'
 
 const Register: FC = () => {
   const [passwordsMatch, setPasswordsMatch] = useState(true)
@@ -15,7 +16,7 @@ const Register: FC = () => {
     passwordConfirm: ''
   })
   const [register, { data, loading, error }] = useMutation(REGISTER)
-  const { Component: ErrorComponent } = useError(error)
+  let { Component: ErrorComponent } = useError(error)
   const client = useApolloClient()
 
   const handleChange = (e: any) => {
@@ -49,6 +50,12 @@ const Register: FC = () => {
     } = data
     localStorage.setItem('token', token)
     client.writeData({ data: { isLoggedIn: true } })
+  }
+
+  if (error && error.message.includes('duplicate key value')) {
+    ErrorComponent = (
+      <GraphQLError errorMessage="That username already exists." />
+    )
   }
 
   return (
