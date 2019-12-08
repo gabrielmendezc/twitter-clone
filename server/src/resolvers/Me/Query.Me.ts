@@ -19,7 +19,6 @@ export const me = async (
     throw new Error('Something went wrong, sorry for the inconvenience.')
   }
 
-  // Make password unaccesible through query ;)
   user.password = ''
 
   return user

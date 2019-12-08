@@ -24,7 +24,7 @@ const HomeAuth: FC = () => {
     <SC.AuthWrapper>
       {joinedAtDay === today && (
         <h1>
-          Welcome,{me.username}!
+          Welcome, {me.username}!
           <span aria-label="smiley emojis" role="img">
             😀😀
           </span>
