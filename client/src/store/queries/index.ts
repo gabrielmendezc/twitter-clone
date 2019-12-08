@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const IS_USER_LOGGED_IN = gql`
-  query {
+  query isLoggedIn {
     isLoggedIn @client
   }
 `

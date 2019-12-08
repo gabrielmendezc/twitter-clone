@@ -10,6 +10,12 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
+  *, *::before, *::after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+  }
+
   :root {
     --dominant-clr: #4670EC;
     --complementary-1: #5025BA;
@@ -19,7 +25,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    margin: 0;
     font-family: 'Roboto', Arial, sans-serif;
   }
 `

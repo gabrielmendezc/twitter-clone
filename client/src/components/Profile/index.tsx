@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 
-const Home: FC = () => (
+const Profile: FC = () => (
   <h1>
-    I'm the homepage!{' '}
+    I'm the profile!{' '}
     <span aria-label="smiley emojis" role="img">
       😀😀
     </span>
   </h1>
 )
 
-export default Home
+export default Profile
