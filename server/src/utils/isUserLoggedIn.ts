@@ -20,7 +20,7 @@ export const isUserLoggedIn = async (req: Request) => {
         process.env.JWT_SECRET as string
       )
 
-      user = await User.findOne(decoded.id)
+      user = await User.findOne({ where: { username: decoded.username } })
 
       const userData = {
         id: user!.id,
