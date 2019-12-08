@@ -50,6 +50,12 @@ export const NavbarAuth = styled.nav`
         width: 20px;
         margin-bottom: 8px;
       }
+
+      @media screen and (max-width: 350px) {
+        input {
+          width: 100px;
+        }
+      }
     }
   }
 
