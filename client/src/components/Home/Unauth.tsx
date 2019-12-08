@@ -40,10 +40,10 @@ const HomeUnauth: FC = () => {
 
   if (data) {
     const {
-      login: { token, user }
+      login: { token }
     } = data
     localStorage.setItem('token', token)
-    client.writeData({ data: { user, isLoggedIn: true } })
+    client.writeData({ data: { isLoggedIn: true } })
   }
 
   return (

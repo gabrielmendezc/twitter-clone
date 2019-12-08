@@ -1,11 +1,12 @@
 import gql from 'graphql-tag'
 
 export const GET_ME = gql`
-  query {
+  query getCurrentUser {
     me {
       id
       email
       username
+      role
     }
   }
 `

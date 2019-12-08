@@ -6,7 +6,7 @@ export const NavbarAuth = styled.nav`
 
   svg {
     fill: var(--complementary-1);
-    width: 40px;
+    width: 27px;
   }
 
   ul.upper-nav {
@@ -24,7 +24,7 @@ export const NavbarAuth = styled.nav`
       display: inline;
 
       &:last-of-type {
-        margin-top: 6px;
+        margin-top: 5px;
       }
     }
 
@@ -47,8 +47,8 @@ export const NavbarAuth = styled.nav`
       }
 
       svg {
-        width: 20px;
-        margin-bottom: 8px;
+        width: 17px;
+        margin-bottom: 6px;
       }
 
       @media screen and (max-width: 350px) {
@@ -77,7 +77,7 @@ export const NavbarAuth = styled.nav`
           bottom: -5px;
           right: 0;
           background-color: var(--complementary-1);
-          height: 3px;
+          height: 2px;
           width: 0%;
           transition: all 250ms ease-in-out;
         }

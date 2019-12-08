@@ -5,6 +5,16 @@ const cache = new InMemoryCache()
 const client = new ApolloClient({
   uri: '/graphql',
   cache,
+  credentials:
+    process.env.NODE_ENV === 'development' ? 'include' : 'same-origin',
+  request: operation => {
+    const token = localStorage.getItem('token')
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : ''
+      }
+    })
+  },
   resolvers: {}
 })
 
