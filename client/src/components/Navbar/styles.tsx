@@ -1,10 +1,94 @@
 import styled from 'styled-components'
 
-export const NavbarAuth = styled.nav``
+export const NavbarAuth = styled.nav`
+  min-height: 70px;
+  margin-bottom: 2.5em;
+
+  svg {
+    fill: var(--complementary-1);
+    width: 40px;
+  }
+
+  ul.upper-nav {
+    display: flex;
+    align-items: center;
+    padding: 1.5em 0;
+    justify-content: space-evenly;
+    background-color: var(--complementary-1);
+
+    svg {
+      fill: white;
+    }
+
+    li {
+      display: inline;
+
+      &:last-of-type {
+        margin-top: 6px;
+      }
+    }
+
+    .searchbar {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+
+      input {
+        padding: 0 0.4em 0.3em 0.4em;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1.5rem;
+        color: white;
+        margin-left: 5px;
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.75);
+        }
+      }
+
+      svg {
+        width: 20px;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  ul.lower-nav {
+    padding: 1em 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    li {
+      display: inline;
+
+      a {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          right: 0;
+          background-color: var(--complementary-1);
+          height: 3px;
+          width: 0%;
+          transition: all 250ms ease-in-out;
+        }
+
+        &.active::after {
+          left: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+`
 
 export const NavbarUnauth = styled.header`
   background-color: var(--complementary-1);
   min-height: 60px;
+  margin-bottom: 2.5em;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   html {
-    box-sizing: border-box;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
@@ -11,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   *, *::before, *::after {
-    box-sizing: inherit;
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
   }
