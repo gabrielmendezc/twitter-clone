@@ -1,8 +1,12 @@
 import React, { FC } from 'react'
 import * as SC from './styles'
 
-const Loader: FC = () => (
-  <SC.SpinnerWrapper>
+export interface ILoaderProps {
+  width?: string
+}
+
+const Loader: FC<ILoaderProps> = ({ width }) => (
+  <SC.SpinnerWrapper width={width}>
     <div></div>
     <div></div>
     <div></div>

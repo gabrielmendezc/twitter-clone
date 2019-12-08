@@ -9,3 +9,11 @@ export const GET_ME = gql`
     }
   }
 `
+
+export const LOGIN = gql`
+  mutation login($data: LoginInput) {
+    login(data: $data) {
+      token
+    }
+  }
+`

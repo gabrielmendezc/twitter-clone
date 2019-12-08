@@ -5,7 +5,7 @@ interface IGraphQLErrorProps {
 }
 
 const GraphQLError: FC<IGraphQLErrorProps> = ({ errorMessage }) => (
-  <strong>{errorMessage}</strong>
+  <strong style={{ color: 'red', fontSize: '1.5rem' }}>{errorMessage}</strong>
 )
 
 export default GraphQLError

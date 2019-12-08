@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const NavbarAuth = styled.nav`
   min-height: 70px;
-  margin-bottom: 2.5em;
+  margin-bottom: 30px;
 
   svg {
     fill: var(--complementary-1);
@@ -94,7 +94,11 @@ export const NavbarAuth = styled.nav`
 export const NavbarUnauth = styled.header`
   background-color: var(--complementary-1);
   min-height: 60px;
-  margin-bottom: 2.5em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
   display: flex;
   align-items: center;
   justify-content: center;

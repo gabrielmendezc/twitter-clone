@@ -1,10 +1,11 @@
 import styled from 'styled-components'
+import { IInputProps } from '.'
 
-export const Input = styled.input`
+export const Input = styled.input<IInputProps>`
   padding: 0.85em;
   border-radius: 3px;
-  background-color: white;
+  background-color: ${props => (props.isOnWhiteBackground ? 'white' : 'white')};
   border: none;
-  outline-color: #e3a02f;
+  outline-color: var(--complementary-1);
   font-size: 1.5rem;
 `
