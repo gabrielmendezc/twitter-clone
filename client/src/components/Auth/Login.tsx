@@ -5,6 +5,7 @@ import Input from '../Input'
 import useError from '../../hooks/useError'
 import { useMutation, useApolloClient } from 'react-apollo'
 import { LOGIN } from '../../queries'
+import Loader from '../Loader'
 
 const Login: FC = () => {
   const [loginData, setLoginData] = useState({
@@ -57,7 +58,7 @@ const Login: FC = () => {
         required
       />
       <p style={{ textAlign: 'left' }}>{error && ErrorComponent}</p>
-      <button type="submit">Log in</button>
+      {loading ? <Loader /> : <button type="submit">Log in</button>}
       <Link to="/auth/forgot-password">Forgot your password?</Link>
       <div className="or">
         <div></div>

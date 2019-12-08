@@ -4,8 +4,10 @@ import Input from '../Input'
 import { useMutation, useApolloClient } from 'react-apollo'
 import { REGISTER } from '../../queries'
 import useError from '../../hooks/useError'
+import Loader from '../Loader'
 
 const Register: FC = () => {
+  const [passwordsMatch, setPasswordsMatch] = useState(true)
   const [registerData, setRegisterData] = useState({
     username: '',
     email: '',
@@ -23,9 +25,10 @@ const Register: FC = () => {
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault()
     if (password !== passwordConfirm) {
-      console.log('Passwords arent the same')
+      setPasswordsMatch(false)
       return
     }
+    setPasswordsMatch(true)
 
     const data = {
       username,
@@ -84,13 +87,25 @@ const Register: FC = () => {
           type="password"
           placeholder="Confirm password"
         />
+        {!passwordsMatch && (
+          <p style={{ textAlign: 'left', color: 'red', fontSize: '1.5rem' }}>
+            <strong>Passwords don't match.</strong>
+          </p>
+        )}
         <p style={{ textAlign: 'left' }}>{error && ErrorComponent}</p>
-        <button
-          style={{ backgroundColor: 'var(--complementary-3)', color: 'black' }}
-          type="submit"
-        >
-          Sign up
-        </button>
+        {loading ? (
+          <Loader />
+        ) : (
+          <button
+            style={{
+              backgroundColor: 'var(--complementary-3)',
+              color: 'black'
+            }}
+            type="submit"
+          >
+            Sign up
+          </button>
+        )}
       </SC.Form>
     </Fragment>
   )
