@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const SideEffectWrapper = styled.section`
   min-height: 100vh;
@@ -17,7 +16,7 @@ export const AuthWrapper = styled.section`
 export const UnauthWrapper = styled.section`
   margin-top: 90px;
   a:last-of-type {
-    color: var(--dominant-clr);
+    color: var(--complementary-1);
     text-decoration: none;
     font-size: 1.45rem;
     margin-top: 2rem;
@@ -28,21 +27,16 @@ export const UnauthWrapper = styled.section`
     }
   }
 
+  h2 {
+    font-size: 2rem;
+    color: black;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+
   @media screen and (min-width: 768px) {
     display: none;
   }
-`
-
-export const CustomLink = styled(Link)`
-  background-color: var(--complementary-3);
-  display: block;
-  text-decoration: none;
-  padding: 0.8em 0;
-  font-size: 1.6rem;
-  width: 55%;
-  margin: 0 auto;
-  border-radius: 3px;
-  color: black;
 `
 
 export const Form = styled.form`

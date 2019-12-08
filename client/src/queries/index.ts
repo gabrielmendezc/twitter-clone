@@ -24,3 +24,16 @@ export const LOGIN = gql`
     }
   }
 `
+
+export const REGISTER = gql`
+  mutation register($data: RegisterInput) {
+    register(data: $data) {
+      token
+      user {
+        id
+        username
+        email
+      }
+    }
+  }
+`
