@@ -22,6 +22,7 @@ const typeDefs = gql`
     password: String!
     confirmed: Boolean!
     active: Boolean!
+    joinedAt: String!
   }
 
   input RegisterInput {

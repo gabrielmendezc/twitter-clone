@@ -8,6 +8,12 @@ export const SideEffectWrapper = styled.section`
   justify-content: center;
 `
 
+export const AuthWrapper = styled.section`
+  & > h1 {
+    font-size: 2rem;
+  }
+`
+
 export const UnauthWrapper = styled.section`
   margin-top: 90px;
   a:last-of-type {

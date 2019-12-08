@@ -25,4 +25,7 @@ export class User extends BaseEntity {
 
   @Column('bool', { default: true })
   active: boolean
+
+  @Column('text', { default: new Date().toString() })
+  joinedAt: string
 }
