@@ -23,6 +23,7 @@ const typeDefs = gql`
     confirmed: Boolean!
     active: Boolean!
     joinedAt: String!
+    profilePicture: String!
   }
 
   input RegisterInput {

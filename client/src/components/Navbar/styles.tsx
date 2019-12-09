@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const NavbarAuth = styled.nav`
   min-height: 70px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 
   svg {
     fill: var(--complementary-1);
@@ -12,12 +12,13 @@ export const NavbarAuth = styled.nav`
   ul.upper-nav {
     display: flex;
     align-items: center;
-    padding: 1.5em 0;
-    justify-content: space-evenly;
+    padding: 1.5em 2em;
+    justify-content: space-between;
     background-color: var(--complementary-1);
 
     svg {
       fill: white;
+      flex-basis: 33.3%;
     }
 
     li {
@@ -47,11 +48,11 @@ export const NavbarAuth = styled.nav`
         margin-bottom: 6px;
       }
 
-      @media screen and (max-width: 350px) {
+      /* @media screen and (max-width: 350px) {
         input {
-          width: 100px;
+          width: 135px;
         }
-      }
+      } */
     }
   }
 
