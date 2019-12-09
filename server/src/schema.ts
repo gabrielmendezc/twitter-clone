@@ -5,6 +5,7 @@ const typeDefs = gql`
     users: [User!]
     user(username: String!): User
     me: User
+    uploads: [File]
   }
 
   type Mutation {
@@ -12,6 +13,7 @@ const typeDefs = gql`
     login(data: LoginInput): AuthResponse
     deleteMe: User # return the deleted user ??
     updateMe(data: UpdateMeInput): User!
+    uploadFile(file: Upload!): File # Upload type added by apollo
   }
 
   type User {
@@ -24,6 +26,12 @@ const typeDefs = gql`
     active: Boolean!
     joinedAt: String!
     profilePicture: String!
+  }
+
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
   }
 
   input RegisterInput {
