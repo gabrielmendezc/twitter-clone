@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from 'react'
+import React, { FC, ChangeEvent, useEffect } from 'react'
 import { useQuery, useApolloClient, useMutation } from 'react-apollo'
 import { GET_ME, CHANGE_PROFILE_PICTURE } from '../../queries'
 import Loader from '../Loader'
@@ -10,16 +10,22 @@ import GraphQLError from '../Error/GraphQLError'
 const Profile: FC = () => {
   const [
     changeProfilePicture,
-    { data: dataUpload, error: ProfilePictureError }
+    {
+      data: dataUpload,
+      loading: loadingNewProfilePicture,
+      error: profilePictureError
+    }
   ] = useMutation(CHANGE_PROFILE_PICTURE)
 
   const { data, loading, error, refetch: refetchUpdatedUser } = useQuery(GET_ME)
   const { Component: ErrorComponent } = useError(error)
+  const { Component: PictureErrorComponent } = useError(profilePictureError)
   const client = useApolloClient()
   const history = useHistory()
 
-  if (loading) return <Loader />
+  if (loading || loadingNewProfilePicture) return <Loader />
   if (error) return ErrorComponent
+  if (profilePictureError) return PictureErrorComponent
 
   const {
     me: { profilePicture, username }
@@ -31,25 +37,22 @@ const Profile: FC = () => {
     history.push('/')
   }
 
-  const uploadHandler = ({
+  const uploadHandler = async ({
     target: { files }
   }: ChangeEvent<HTMLInputElement>) => {
     try {
       const file = files && files[0]
       if (file) {
-        changeProfilePicture({ variables: { file } })
+        await changeProfilePicture({ variables: { file } })
+        refetchUpdatedUser()
       }
     } catch {}
-  }
-
-  if (dataUpload) {
-    refetchUpdatedUser()
   }
 
   return (
     <SC.ProfileWrapper>
       <SC.Image src={profilePicture} alt={`${username}'s profile picture`} />
-      {ProfilePictureError && (
+      {profilePictureError && (
         <GraphQLError errorMessage="We could not update your profile picture, sorry for the inconvenience" />
       )}
       <SC.Profile>
