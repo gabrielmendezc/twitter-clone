@@ -28,4 +28,10 @@ export class User extends BaseEntity {
 
   @Column('text', { default: new Date().toString() })
   joinedAt: string
+
+  @Column('text', {
+    default:
+      'https://res.cloudinary.com/dkvjiivlg/image/upload/v1575887412/samples/user_qvsrsn.png'
+  })
+  profilePicture: string
 }

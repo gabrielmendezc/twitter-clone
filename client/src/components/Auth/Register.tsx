@@ -5,7 +5,6 @@ import { useMutation, useApolloClient } from 'react-apollo'
 import { REGISTER } from '../../queries'
 import useError from '../../hooks/useError'
 import Loader from '../Loader'
-import GraphQLError from '../Error/GraphQLError'
 
 const Register: FC = () => {
   const [passwordsMatch, setPasswordsMatch] = useState(true)
