@@ -52,12 +52,6 @@ const Register: FC = () => {
     client.writeData({ data: { isLoggedIn: true } })
   }
 
-  if (error && error.message.includes('duplicate key value')) {
-    ErrorComponent = (
-      <GraphQLError errorMessage="That username already exists." />
-    )
-  }
-
   return (
     <Fragment>
       <h2>Create an account</h2>

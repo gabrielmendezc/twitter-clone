@@ -7,31 +7,38 @@ import bcrypt from 'bcryptjs'
 export const register = async (
   _,
   { data: { username, email, password } }: ICreateUserArgs
-): Promise<IAuthResponse> => {
-  const hashedPassword = await bcrypt.hash(password, 12)
+): Promise<IAuthResponse | null> => {
+  try {
+    const hashedPassword = await bcrypt.hash(password, 12)
 
-  const user = User.create({
-    username,
-    email,
-    password: hashedPassword
-  })
+    const user = User.create({
+      username,
+      email,
+      password: hashedPassword
+    })
 
-  const validationErrors = await validate(user)
+    const validationErrors = await validate(user)
 
-  if (validationErrors.length > 0) throw new Error('Validation failed')
+    if (validationErrors.length > 0) throw new Error('Validation failed')
 
-  await user.save()
+    await user.save()
 
-  const token = jwt.sign(
-    { username: user.username },
-    process.env.JWT_SECRET as string,
-    {
-      expiresIn: '1h'
+    const token = jwt.sign(
+      { username: user.username },
+      process.env.JWT_SECRET as string,
+      {
+        expiresIn: '2h'
+      }
+    )
+
+    return {
+      user,
+      token
     }
-  )
-
-  return {
-    user,
-    token
+  } catch (err) {
+    if (err.code == 23505) {
+      throw new Error('That username already exists')
+    }
+    return null
   }
 }

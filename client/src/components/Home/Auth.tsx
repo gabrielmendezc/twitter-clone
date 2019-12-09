@@ -13,8 +13,7 @@ const HomeAuth: FC = () => {
   if (error) return ErrorComponent
 
   const {
-    me,
-    me: { joinedAt }
+    me: { joinedAt, username }
   } = data
 
   const joinedAtDay = new Date(joinedAt).getDate()
@@ -24,7 +23,7 @@ const HomeAuth: FC = () => {
     <SC.AuthWrapper>
       {joinedAtDay === today && (
         <h1>
-          Welcome, {me.username}!
+          Welcome, {username}!
           <span aria-label="smiley emojis" role="img">
             😀😀
           </span>

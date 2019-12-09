@@ -1,5 +1,4 @@
-import React, { FC, useState, FormEvent } from 'react'
-import Input from '../Input'
+import React, { FC } from 'react'
 import * as SC from './styles'
 import Login from '../Auth/Login'
 import Register from '../Auth/Register'

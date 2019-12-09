@@ -8,7 +8,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    register(data: RegisterInput): AuthResponse!
+    register(data: RegisterInput): AuthResponse
     login(data: LoginInput): AuthResponse!
     deleteMe: User # return a user ??
     updateMe(data: UpdateMeInput): User!
