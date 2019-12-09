@@ -3,6 +3,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloLink, Observable } from 'apollo-link'
 import { onError } from 'apollo-link-error'
 import { HttpLink } from 'apollo-link-http'
+import { createUploadLink } from 'apollo-upload-client'
 
 const cache = new InMemoryCache()
 
@@ -14,6 +15,12 @@ const request = (operation: any) => {
     }
   })
 }
+
+const uploadLink = createUploadLink({
+  uri: '/graphql',
+  credentials:
+    process.env.NODE_ENV === 'development' ? 'include' : 'same-origin'
+})
 
 const requestLink = new ApolloLink(
   (operation, forward) =>
@@ -50,11 +57,7 @@ const client = new ApolloClient({
       if (networkError) console.log(`[Network error]: ${networkError}`)
     }),
     requestLink,
-    new HttpLink({
-      uri: '/graphql',
-      credentials:
-        process.env.NODE_ENV === 'development' ? 'include' : 'same-origin'
-    })
+    uploadLink
   ])
 })
 

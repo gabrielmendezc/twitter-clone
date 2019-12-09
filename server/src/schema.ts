@@ -13,7 +13,7 @@ const typeDefs = gql`
     login(data: LoginInput): AuthResponse
     deleteMe: User # return the deleted user ??
     updateMe(data: UpdateMeInput): User!
-    uploadFile(file: Upload!): File # Upload type added by apollo
+    changeProfilePicture(file: Upload!): String # Upload type added by apollo
   }
 
   type User {

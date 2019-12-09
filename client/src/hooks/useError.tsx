@@ -1,9 +1,9 @@
 import React from 'react'
-import { ApolloError } from 'apollo-boost'
 import GraphQLError from '../components/Error/GraphQLError'
 import ServerError from '../components/Error/ServerError'
 import { Redirect } from 'react-router'
 import { useApolloClient } from 'react-apollo'
+import { ApolloError } from 'apollo-client'
 
 interface IHookValues {
   errorInfo: ApolloError | undefined

@@ -39,12 +39,8 @@ export const REGISTER = gql`
   }
 `
 
-export const UPLOAD_FILE = gql`
-  mutation uploadFile($file: Upload!) {
-    uploadFile(file: $file) {
-      filename
-      mimetype
-      encoding
-    }
+export const CHANGE_PROFILE_PICTURE = gql`
+  mutation changeProfilePicture($file: Upload!) {
+    changeProfilePicture(file: $file)
   }
 `
