@@ -11,7 +11,7 @@ export const login = async (
   _,
   { data: { username, password } }: ILoginArgs,
   { user: currentUsername }: IApolloContext
-): Promise<IAuthResponse> => {
+): Promise<IAuthResponse | null> => {
   if (currentUsername) {
     throw new Error('You are already logged in.')
   }
@@ -28,16 +28,22 @@ export const login = async (
     throw new Error('Invalid credentials.')
   }
 
-  const token = jwt.sign(
-    { username: user.username },
-    process.env.JWT_SECRET as string,
-    {
-      expiresIn: '2h'
-    }
-  )
+  try {
+    const token = jwt.sign(
+      { username: user.username },
+      process.env.JWT_SECRET as string,
+      {
+        expiresIn: '2h'
+      }
+    )
 
-  return {
-    user,
-    token
+    return {
+      user,
+      token
+    }
+  } catch (err) {
+    throw new Error(
+      'Could not verify identity, we are working hard to fix this, try again later.'
+    )
   }
 }
