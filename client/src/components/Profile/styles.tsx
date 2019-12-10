@@ -10,10 +10,11 @@ export const Image = styled.img`
   height: 128px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 2rem;
 `
 
 export const ProfilePictureWrapper = styled.div`
+  margin-bottom: 2rem;
+
   position: relative;
   form {
     position: absolute;

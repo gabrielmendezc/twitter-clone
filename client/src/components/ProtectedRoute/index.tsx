@@ -1,16 +1,20 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { useApolloClient } from 'react-apollo'
 
-const ProtectedRoute = ({ component, ...rest }: any) => {
+const PrivateRoute = ({ component, ...rest }: any) => {
   const client = useApolloClient()
-  const isLoggedIn = localStorage.getItem('token')
-  if (!isLoggedIn) {
-    client.writeData({ data: { isLoggedIn: false } })
+  if (!localStorage.token) {
+    client.writeData({ data: { isLoggedIn: false, me: null } })
   }
+
   const routeComponent = (props: any) =>
-    isLoggedIn ? React.createElement(component, props) : <Redirect to="/" />
+    localStorage.token ? (
+      React.createElement(component, props)
+    ) : (
+      <Redirect to={{ pathname: '/' }} />
+    )
   return <Route {...rest} render={routeComponent} />
 }
 
-export default ProtectedRoute
+export default PrivateRoute

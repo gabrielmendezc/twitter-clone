@@ -25,7 +25,6 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Roboto', Arial, sans-serif;
-    min-height: 100vh;
   }
 
   

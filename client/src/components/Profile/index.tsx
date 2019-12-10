@@ -6,7 +6,6 @@ import useError from '../../hooks/useError'
 import * as SC from './styles'
 import { useHistory } from 'react-router'
 import GraphQLError from '../Error/GraphQLError'
-import ProtectedRoute from '../ProtectedRoute'
 
 const Profile: FC = () => {
   const [downloadingNewImage, setDownloadingNewImage] = useState(false)

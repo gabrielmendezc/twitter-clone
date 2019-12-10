@@ -5,7 +5,7 @@ import Home from './components/Home'
 import Profile from './components/Profile'
 import AccountSettings from './components/Account/Settings'
 import Main from './components/Main'
-import ProtectedRoute from './components/ProtectedRoute'
+import PrivateRoute from './components/ProtectedRoute'
 
 const App: FC = () => {
   return (
@@ -14,8 +14,8 @@ const App: FC = () => {
       <Main>
         <Switch>
           <Route path="/" exact component={Home} />
-          <ProtectedRoute path="/profile" exact component={Profile} />
-          <ProtectedRoute
+          <PrivateRoute path="/profile" exact component={Profile} />
+          <PrivateRoute
             path="/account/settings"
             exact
             component={AccountSettings}

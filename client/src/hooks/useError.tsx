@@ -24,7 +24,7 @@ const useError = (error: ApolloError | undefined): IHookValues => {
 
     if (notAuthenticated) {
       localStorage.getItem('token') && localStorage.removeItem('token')
-      client.writeData({ data: { isLoggedIn: false, me: {} } })
+      client.writeData({ data: { isLoggedIn: false, me: null } })
       hookValues.Component = <Redirect to="/" />
     } else {
       hookValues.Component = <GraphQLError errorMessage={error.message} />
