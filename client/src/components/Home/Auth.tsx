@@ -9,7 +9,12 @@ const HomeAuth: FC = () => {
   const { data, loading, error } = useQuery(GET_ME)
   const { Component: ErrorComponent } = useError(error)
 
-  if (loading) return <Loader />
+  if (loading)
+    return (
+      <SC.SideEffectWrapper>
+        <Loader />
+      </SC.SideEffectWrapper>
+    )
   if (error) return ErrorComponent
 
   const {

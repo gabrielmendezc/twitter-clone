@@ -31,10 +31,26 @@ const Login: FC = () => {
 
   if (data) {
     const {
-      login: { token }
+      login: {
+        token,
+        user: { username, email, profilePicture, id, role, joinedAt }
+      }
     } = data
     localStorage.setItem('token', token)
-    client.writeData({ data: { isLoggedIn: true } })
+    client.writeData({
+      data: {
+        isLoggedIn: true,
+        me: {
+          username,
+          email,
+          profilePicture,
+          id,
+          role,
+          joinedAt,
+          __typename: 'User'
+        }
+      }
+    })
   }
 
   return (

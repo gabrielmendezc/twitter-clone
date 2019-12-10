@@ -14,6 +14,30 @@ export const Image = styled.img`
 `
 
 export const ProfilePictureWrapper = styled.div`
+  position: relative;
+  form {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    label {
+      position: absolute;
+      right: -5px;
+      bottom: 13px;
+      z-index: 22;
+      cursor: pointer;
+      border-radius: 50%;
+      padding: 10px;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      border: 1px solid var(--complementary-1);
+      background-color: white;
+      align-items: center;
+    }
+  }
+
   input {
     opacity: 0;
     width: 0.1px;
@@ -21,6 +45,12 @@ export const ProfilePictureWrapper = styled.div`
     overflow: hidden;
     position: absolute;
     z-index: -1;
+  }
+
+  svg {
+    width: 30px;
+    height: 30px;
+    fill: var(--complementary-1);
   }
 `
 

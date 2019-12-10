@@ -21,6 +21,9 @@ export const LOGIN = gql`
         id
         username
         email
+        profilePicture
+        role
+        joinedAt
       }
     }
   }
@@ -34,6 +37,9 @@ export const REGISTER = gql`
         id
         username
         email
+        profilePicture
+        role
+        joinedAt
       }
     }
   }
