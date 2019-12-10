@@ -1,10 +1,11 @@
 import { FileUpload } from 'graphql-upload'
 import cloudinary from 'cloudinary'
-import { createWriteStream } from 'fs'
+import { createWriteStream, readdir, unlink } from 'fs'
 import shortid from 'shortid'
 import { IApolloContext } from '../../shared/interfaces'
 import { AuthenticationError } from 'apollo-server-errors'
 import { User } from '../../entity/User'
+import { join } from 'path'
 
 const uploadDir = './uploads'
 
@@ -42,6 +43,16 @@ export const changeProfilePicture = async (
     const pictureUrl = await processUpload(file)
     const result = await cloudinary.v2.uploader.upload(pictureUrl.path, {
       folder: 'profilePictures'
+    })
+
+    readdir(uploadDir, (err, files) => {
+      if (err) throw err
+
+      for (const file of files) {
+        unlink(join(uploadDir, file), err => {
+          if (err) throw err
+        })
+      }
     })
 
     await User.update(

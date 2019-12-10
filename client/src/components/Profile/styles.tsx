@@ -1,17 +1,36 @@
 import styled from 'styled-components'
 
+export const JustifyCenter = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 export const Image = styled.img`
   width: 128px;
   height: 128px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
+`
+
+export const ProfilePictureWrapper = styled.div`
+  input {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
 `
 
 export const ProfileWrapper = styled.section`
   & > h1:first-of-type {
     font-size: 2rem;
   }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0 2em 2em 2em;
 `
 
