@@ -1,11 +1,11 @@
-import resolvers from './resolvers'
 import { ApolloServer } from 'apollo-server-express'
-import typeDefs from './schema'
 import { createConnection } from 'typeorm'
 import dotenv from 'dotenv'
 import cloudinary from 'cloudinary'
-import { isUserLoggedIn } from './utils/isUserLoggedIn'
 import express from 'express'
+import { MeResolver } from './resolvers/Me'
+import { buildSchema } from 'type-graphql'
+import { UserResolver } from './resolvers/User'
 dotenv.config()
 ;(async () => {
   const app = express()
@@ -16,18 +16,16 @@ dotenv.config()
     api_secret: process.env.CLOUDINARY_API_SECRET
   })
 
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: async ({ req }) => {
-      const user = await isUserLoggedIn(req)
-
-      return { user }
-    }
-  })
   const PORT = process.env.PORT || 4000
 
   await createConnection()
+
+  const server = new ApolloServer({
+    schema: await buildSchema({
+      resolvers: [MeResolver, UserResolver]
+    }),
+    context: ({ req, res }) => ({ req, res })
+  })
 
   server.applyMiddleware({ app })
 

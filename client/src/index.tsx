@@ -7,11 +7,11 @@ import { GlobalStyles } from './globalStyles'
 import client from './store'
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <Router>
+  <Router>
+    <ApolloProvider client={client}>
       <GlobalStyles />
       <App />
-    </Router>
-  </ApolloProvider>,
+    </ApolloProvider>
+  </Router>,
   document.getElementById('root')
 )
