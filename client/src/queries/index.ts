@@ -44,9 +44,3 @@ export const REGISTER = gql`
     }
   }
 `
-
-export const CHANGE_PROFILE_PICTURE = gql`
-  mutation changeProfilePicture($file: Upload!) {
-    changeProfilePicture(file: $file)
-  }
-`
