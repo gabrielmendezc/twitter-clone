@@ -1,8 +1,10 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, Fragment } from 'react'
 import Routes from './components/Routes'
 import { setAccessToken } from './accessToken'
 import Loader from './components/Loader'
 import { useHistory } from 'react-router-dom'
+import NavbarUnauth from './components/Navbar/Unauth'
+import { JustifyCenter } from './components/Profile/styles'
 interface Props {}
 
 const App: FC<Props> = () => {
@@ -31,16 +33,21 @@ const App: FC<Props> = () => {
 
   if (loading) {
     return (
-      <div
-        style={{
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        <Loader />
-      </div>
+      <Fragment>
+        <NavbarUnauth />
+        <div
+          style={{
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <JustifyCenter>
+            <Loader />
+          </JustifyCenter>
+        </div>
+      </Fragment>
     )
   }
 
