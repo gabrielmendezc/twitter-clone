@@ -5,10 +5,9 @@ import Input from '../Input'
 import { useMutation } from 'react-apollo'
 import { LOGIN } from '../../graphql/mutations'
 import { ME } from '../../graphql/queries'
-import { useAccessToken } from '../../hooks/useAccessToken'
+import { setAccessToken } from '../../utils/accessToken'
 
 const Login: FC = () => {
-  const { setAccessToken } = useAccessToken()
   const [loginData, setLoginData] = useState({
     username: '',
     password: ''

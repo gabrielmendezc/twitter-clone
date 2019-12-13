@@ -3,12 +3,11 @@ import Routes from './components/Routes'
 import Loader from './components/Loader'
 import { useHistory } from 'react-router-dom'
 import NavbarUnauth from './components/Navbar/Unauth'
-import { useAccessToken } from './hooks/useAccessToken'
+import { setAccessToken } from './utils/accessToken'
 interface Props {}
 
 const App: FC<Props> = () => {
   const [loading, setLoading] = useState(true)
-  const { setAccessToken } = useAccessToken()
   const history = useHistory()
   useEffect(() => {
     ;(async () => {

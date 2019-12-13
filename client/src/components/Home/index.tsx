@@ -2,11 +2,9 @@ import React, { FC } from 'react'
 import { useQuery } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom'
-import { useAccessToken } from '../../hooks/useAccessToken'
+import { getAccessToken } from '../../utils/accessToken'
 
 const Home: FC = () => {
-  const { accessToken } = useAccessToken()
-  console.log(accessToken)
   const { data, loading, error } = useQuery(
     gql`
       {

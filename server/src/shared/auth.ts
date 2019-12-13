@@ -20,7 +20,8 @@ export const createRefreshToken = (user: User) => {
 export const sendRefreshToken = (res: Response, token: string) => {
   res.cookie('jid', token, {
     httpOnly: true,
-    path: '/refresh_token'
+    path: '/refresh_token',
+    maxAge: 604800000 // 7 days
   })
 }
 

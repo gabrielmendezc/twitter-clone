@@ -1,11 +1,11 @@
 import { TokenRefreshLink } from 'apollo-link-token-refresh'
 import jwtDecode from 'jwt-decode'
-import { useAccessToken } from '../../hooks/useAccessToken'
+import { getAccessToken, setAccessToken } from '../../utils/accessToken'
 
 export const tokenRefreshLink = new TokenRefreshLink({
   accessTokenField: 'accessToken',
   isTokenValidOrUndefined: () => {
-    const { accessToken } = useAccessToken()
+    const accessToken = getAccessToken()
     if (!accessToken) {
       return true
     }
@@ -28,7 +28,6 @@ export const tokenRefreshLink = new TokenRefreshLink({
     })
   },
   handleFetch: accessToken => {
-    const { setAccessToken } = useAccessToken()
     console.log('resetting accessToken...')
     setAccessToken(accessToken)
   },
