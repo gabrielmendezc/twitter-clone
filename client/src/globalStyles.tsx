@@ -27,7 +27,12 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', Arial, sans-serif;
   }
 
-  
+  div#initial-loader {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 /* Color palette:
   Color for highlighting *relevant* actions (dominant color): 

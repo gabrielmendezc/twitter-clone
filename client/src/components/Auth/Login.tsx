@@ -4,10 +4,11 @@ import { Link, useHistory } from 'react-router-dom'
 import Input from '../Input'
 import { useMutation } from 'react-apollo'
 import { LOGIN } from '../../graphql/mutations'
-import { setAccessToken } from '../../accessToken'
 import { ME } from '../../graphql/queries'
+import { useAccessToken } from '../../hooks/useAccessToken'
 
 const Login: FC = () => {
+  const { setAccessToken } = useAccessToken()
   const [loginData, setLoginData] = useState({
     username: '',
     password: ''
@@ -15,7 +16,7 @@ const Login: FC = () => {
   const [login] = useMutation(LOGIN)
   const history = useHistory()
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value })
   }
 

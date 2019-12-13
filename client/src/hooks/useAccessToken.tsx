@@ -8,7 +8,9 @@ export const useAccessToken = (): IAccessTokenContext => {
   const accessTokenContext = useContext(AccessTokenContext)
 
   if (!accessTokenContext) {
-    throw new Error('Context for access token is needed.')
+    throw new Error(
+      'Context for access token is needed, make sure you added a context Provider'
+    )
   }
 
   return accessTokenContext

@@ -1,14 +1,14 @@
 import React, { FC, useState, useEffect, Fragment } from 'react'
 import Routes from './components/Routes'
-import { setAccessToken } from './accessToken'
 import Loader from './components/Loader'
 import { useHistory } from 'react-router-dom'
 import NavbarUnauth from './components/Navbar/Unauth'
-import { JustifyCenter } from './components/Profile/styles'
+import { useAccessToken } from './hooks/useAccessToken'
 interface Props {}
 
 const App: FC<Props> = () => {
   const [loading, setLoading] = useState(true)
+  const { setAccessToken } = useAccessToken()
   const history = useHistory()
   useEffect(() => {
     ;(async () => {
@@ -35,17 +35,8 @@ const App: FC<Props> = () => {
     return (
       <Fragment>
         <NavbarUnauth />
-        <div
-          style={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <JustifyCenter>
-            <Loader />
-          </JustifyCenter>
+        <div id="initial-loader">
+          <Loader />
         </div>
       </Fragment>
     )

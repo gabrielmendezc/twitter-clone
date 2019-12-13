@@ -2,9 +2,11 @@ import React, { FC } from 'react'
 import { useQuery } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Link } from 'react-router-dom'
-import { getAccessToken } from '../../accessToken'
+import { useAccessToken } from '../../hooks/useAccessToken'
 
 const Home: FC = () => {
+  const { accessToken } = useAccessToken()
+  console.log(accessToken)
   const { data, loading, error } = useQuery(
     gql`
       {
@@ -13,8 +15,7 @@ const Home: FC = () => {
           username
         }
       }
-    `,
-    { fetchPolicy: 'network-only' }
+    `
   )
 
   if (loading) return <div>loading...</div>
