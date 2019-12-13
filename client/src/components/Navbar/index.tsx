@@ -3,7 +3,7 @@ import NavbarUnauth from './Unauth'
 import NavbarAuth from './Auth'
 
 const Navbar: FC = () => {
-  let isAuthed = true
+  let isAuthed = false
 
   return isAuthed ? <NavbarAuth /> : <NavbarUnauth />
 }

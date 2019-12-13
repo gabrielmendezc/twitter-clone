@@ -41,7 +41,7 @@ dotenv.config()
     context: ({ req, res }) => ({ req, res })
   })
 
-  server.applyMiddleware({ app })
+  server.applyMiddleware({ app, cors: false })
 
   app.listen(PORT, () =>
     console.log(`Server listening on http://localhost:${PORT}`)

@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import { ApolloProvider } from 'react-apollo'
 import { GlobalStyles } from './globalStyles'
 import client from './store'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
-  <Router>
-    <ApolloProvider client={client}>
-      <GlobalStyles />
+  <ApolloProvider client={client}>
+    <GlobalStyles />
+    <BrowserRouter>
       <App />
-    </ApolloProvider>
-  </Router>,
+    </BrowserRouter>
+  </ApolloProvider>,
   document.getElementById('root')
 )
