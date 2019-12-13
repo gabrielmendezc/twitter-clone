@@ -9,6 +9,7 @@ const Home: FC = () => {
   if (loading) return <div>loading...</div>
   if (error) return <div>error</div>
 
+  console.log(data)
   return (
     <>
       <Link to="/login">login</Link>

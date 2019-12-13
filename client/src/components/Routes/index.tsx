@@ -6,14 +6,15 @@ import Home from '../Home'
 import Login from '../Auth/Login'
 import Register from '../Auth/Register'
 import { ProtectedRoute } from '../ProtectedRoute'
+import { PublicRoute } from '../PublicRoute'
 
 const Routes: FC = () => (
   <Fragment>
     <Navbar />
     <Main>
       <Switch>
-        <Route path="/login" exact component={Login} />
-        <Route path="/register" exact component={Register} />
+        <PublicRoute path="/login" exact component={Login} />
+        <PublicRoute path="/register" exact component={Register} />
         <ProtectedRoute
           restrictedToAdmin={false}
           path="/"

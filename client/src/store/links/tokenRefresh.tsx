@@ -22,13 +22,13 @@ export const tokenRefreshLink = new TokenRefreshLink({
     }
   },
   fetchAccessToken: () => {
+    console.log('fetching access token...')
     return fetch('http://localhost:4000/refresh_token', {
       method: 'POST',
       credentials: 'include'
     })
   },
   handleFetch: accessToken => {
-    console.log('resetting accessToken...')
     setAccessToken(accessToken)
   },
   handleError: err => {
