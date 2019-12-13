@@ -1,20 +1,10 @@
 import React, { FC } from 'react'
 import { useQuery } from 'react-apollo'
-import gql from 'graphql-tag'
 import { Link } from 'react-router-dom'
-import { getAccessToken } from '../../utils/accessToken'
+import { ME } from '../../graphql/queries'
 
 const Home: FC = () => {
-  const { data, loading, error } = useQuery(
-    gql`
-      {
-        me {
-          id
-          username
-        }
-      }
-    `
-  )
+  const { data, loading, error } = useQuery(ME)
 
   if (loading) return <div>loading...</div>
   if (error) return <div>error</div>
@@ -22,9 +12,7 @@ const Home: FC = () => {
   return (
     <>
       <Link to="/login">login</Link>
-      <h1>
-        {data.me.id} {data.me.username}
-      </h1>
+      <h1>{data.me.username}</h1>
     </>
   )
 }

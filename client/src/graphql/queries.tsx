@@ -7,6 +7,7 @@ export const ME = gql`
       email
       profilePicture
       joinedAt
+      role
       confirmed
     }
   }

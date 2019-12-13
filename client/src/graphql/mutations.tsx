@@ -8,6 +8,7 @@ export const LOGIN = gql`
         email
         profilePicture
         joinedAt
+        role
         confirmed
       }
       accessToken

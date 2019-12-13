@@ -69,6 +69,7 @@ const Login: FC = () => {
         required
       />
       <Link to="/auth/forgot-password">Forgot your password?</Link>
+      <Link to="/">go here</Link>
       <div className="or">
         <div></div>
         <small>OR</small>
