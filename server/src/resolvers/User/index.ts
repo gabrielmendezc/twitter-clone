@@ -1,10 +1,24 @@
-import { Resolver, Mutation, Arg, Query, UseMiddleware } from 'type-graphql'
+import {
+  Resolver,
+  Mutation,
+  Arg,
+  Query,
+  UseMiddleware,
+  Ctx
+} from 'type-graphql'
 import { AuthResponse } from '../Me'
 import bcrypt, { compare } from 'bcryptjs'
 import { User } from '../../entity/User'
 import { validate } from 'class-validator'
 import { sign } from 'jsonwebtoken'
 import { isAuth } from '../../middlewares/isAuth'
+import { hasRole } from '../../middlewares/hasRole'
+import { MyContext } from '../../shared/interfaces'
+import {
+  createRefreshToken,
+  createAccessToken,
+  sendRefreshToken
+} from '../../shared/auth'
 
 @Resolver()
 export class UserResolver {
@@ -29,17 +43,17 @@ export class UserResolver {
     try {
       await user.save()
 
-      const token = sign(
+      const accessToken = sign(
         { username: user.username },
         process.env.JWT_SECRET as string,
         {
-          expiresIn: '2h'
+          expiresIn: '15m'
         }
       )
 
       return {
         user,
-        token
+        accessToken
       }
     } catch (err) {
       if (err.code == 23505) {
@@ -51,7 +65,8 @@ export class UserResolver {
   @Mutation(() => AuthResponse)
   async login(
     @Arg('username') username: string,
-    @Arg('password') password: string
+    @Arg('password') password: string,
+    @Ctx() { res }: MyContext
   ): Promise<AuthResponse> {
     const user = await User.findOne({ where: { username } })
 
@@ -65,21 +80,16 @@ export class UserResolver {
       throw new Error('Invalid credentials.')
     }
 
-    // TODO: Add refresh token
-    const token = sign(
-      { username: user.username },
-      process.env.JWT_SECRET as string,
-      { expiresIn: '15m' }
-    )
+    sendRefreshToken(res, createRefreshToken(user))
 
     return {
-      token,
+      accessToken: createAccessToken(user),
       user
     }
   }
 
   @Query(() => [User])
-  @UseMiddleware(isAuth)
+  @UseMiddleware(isAuth, hasRole('admin'))
   async getAll(): Promise<User[]> {
     const users = await User.find()
     return users

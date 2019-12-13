@@ -44,4 +44,7 @@ export class User extends BaseEntity {
       'https://res.cloudinary.com/dkvjiivlg/image/upload/v1575887412/samples/user_qvsrsn.png'
   })
   profilePicture: string
+
+  @Column('int', { default: 0 })
+  tokenVersion: number
 }

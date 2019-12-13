@@ -4,6 +4,7 @@ import { AuthenticationError } from 'apollo-server-express'
 import { verify } from 'jsonwebtoken'
 
 export const isAuth: MiddlewareFn<MyContext> = ({ context }, next) => {
+  // token format: Bearer xxxxxxx
   const authorization = context.req.headers['authorization']
 
   if (!authorization) {
@@ -14,10 +15,9 @@ export const isAuth: MiddlewareFn<MyContext> = ({ context }, next) => {
 
   try {
     const token = authorization.split(' ')[1]
-    const payload = verify(token, process.env.JWT_SECRET!)
+    const payload = verify(token, process.env.ACCESS_TOKEN_SECRET!)
     context.payload = payload as any
   } catch (err) {
-    console.log(err)
     throw new AuthenticationError(
       'You are not logged in, please log in to proceed.'
     )
