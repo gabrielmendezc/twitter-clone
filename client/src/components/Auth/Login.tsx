@@ -1,4 +1,4 @@
-import React, { FC, useState, FormEvent } from 'react'
+import React, { FC, useState, FormEvent, Fragment } from 'react'
 import * as SC from './styles'
 import { Link, useHistory } from 'react-router-dom'
 import Input from '../Input'
@@ -8,46 +8,63 @@ import { ME } from '../../graphql/queries'
 import { setAccessToken } from '../../utils/accessToken'
 import { FormGroup } from '../Input/styles'
 import Loader from '../Loader'
+import GraphQLError from '../Error/GraphQLError'
 
 const Login: FC = () => {
   const [loginData, setLoginData] = useState({
     username: '',
     password: ''
   })
-  const [login, { loading }] = useMutation(LOGIN)
+  const [login, { loading, error }] = useMutation(LOGIN)
   const history = useHistory()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value })
   }
 
+  const errors =
+    error && error.graphQLErrors.length > 0
+      ? error.graphQLErrors.map((graphQLError, index) => (
+          <Fragment>
+            <GraphQLError key={index} errorMessage={graphQLError.message} />
+            <br />
+          </Fragment>
+        ))
+      : null
+
   const { username, password } = loginData
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    const response = await login({
-      variables: {
-        username,
-        password
-      },
-      update: (store, { data }) => {
-        if (!data) {
-          return null
-        }
-
-        store.writeQuery({
-          query: ME,
-          data: {
-            me: data.login.user
+    try {
+      const response = await login({
+        variables: {
+          username,
+          password
+        },
+        update: (store, { data }) => {
+          if (!data) {
+            return null
           }
-        })
-      }
-    })
-    if (response && response.data) {
-      setAccessToken(response.data.login.accessToken)
-    }
 
-    history.push('/')
+          store.writeQuery({
+            query: ME,
+            data: {
+              me: data.login.user
+            }
+          })
+        }
+      })
+      if (response && response.data) {
+        setAccessToken(response.data.login.accessToken)
+      }
+
+      history.push('/')
+    } catch {}
+  }
+
+  if (error) {
+    console.log(error.graphQLErrors)
   }
 
   return (
@@ -77,6 +94,7 @@ const Login: FC = () => {
             required
           />
         </FormGroup>
+        {error && <Fragment>{errors}</Fragment>}
         <Link to="/auth/forgot-password">Forgot your password?</Link>
         <button type="submit">{loading ? <Loader /> : 'Log in'}</button>
         <div>

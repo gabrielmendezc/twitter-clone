@@ -45,6 +45,11 @@ export const LoginForm = styled.form`
     font-size: 1.5rem;
   }
 
+  strong {
+    display: block;
+    margin-bottom: 0.1em;
+  }
+
   button[type='submit'] {
     width: 100%;
     cursor: pointer;
