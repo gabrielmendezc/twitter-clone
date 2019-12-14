@@ -5,7 +5,7 @@ import { getConnection } from 'typeorm'
 
 export const createAccessToken = (user: User) => {
   return sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET!, {
-    expiresIn: '15m'
+    expiresIn: process.env.ACCESS_TOKEN_EXPIRY
   })
 }
 
@@ -13,7 +13,7 @@ export const createRefreshToken = (user: User) => {
   return sign(
     { username: user.username, tokenVersion: user.tokenVersion },
     process.env.REFRESH_TOKEN_SECRET!,
-    { expiresIn: '7d' }
+    { expiresIn: process.env.REFRESH_TOKEN_EXPIRY }
   )
 }
 
@@ -21,7 +21,8 @@ export const sendRefreshToken = (res: Response, token: string) => {
   res.cookie('jid', token, {
     httpOnly: true,
     path: '/refresh_token',
-    maxAge: 604800000 // 7 days
+    secure: process.env.NODE_ENV === 'production' ? true : false,
+    maxAge: +process.env.JID_COOKIE_EXPIRY!
   })
 }
 

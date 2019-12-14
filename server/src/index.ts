@@ -10,10 +10,12 @@ import { UserResolver } from './resolvers/User'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import { refreshToken } from './utils/refreshToken'
+import helmet from 'helmet'
 
 dotenv.config()
 ;(async () => {
   const app = express()
+  app.use(helmet())
   app.use(
     cors({
       origin: 'http://localhost:3000',
