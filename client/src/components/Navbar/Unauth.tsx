@@ -6,7 +6,7 @@ import { Logo } from '../Logo'
 const NavbarUnauth: FC = () => {
   return (
     <SC.NavbarUnauth>
-      <Logo />
+      <Logo titleVisible />
       <form id="login">
         <div className="form-group">
           <Input

@@ -1,7 +1,17 @@
-import React, { FC } from 'react'
+import React, { FC, Fragment } from 'react'
 
-export const Logo: FC = () => (
-  <svg viewBox="0 0 500 500" width="200" version="1.1" id="svg_null">
+interface Props {
+  width?: string
+  titleVisible?: boolean
+}
+
+export const Logo: FC<Props> = ({ width, titleVisible }) => (
+  <svg
+    viewBox="0 0 500 500"
+    width={width ? width : '200'}
+    version="1.1"
+    id="svg_null"
+  >
     <g id="root" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <rect id="background.accent" fill="none" x="0" y="0"></rect>
       <path
@@ -10,40 +20,44 @@ export const Logo: FC = () => (
         fill="#eae1e1"
         fillRule="nonzero"
       ></path>
-      <g id="Group-2" transform="translate(40.000000, 280.000000)">
-        <rect id="Rectangle-35" x="0" y="0" width="420" height="60"></rect>
-        <text
-          id="headerText.primary"
-          fontFamily="Roboto"
-          fontSize="60"
-          fontWeight="500"
-          line-spacing="60"
-          letterSpacing="3"
-          fill="#fff"
-          data-text-alignment="C"
-          fontStyle="normal"
-        >
-          <tspan x="115.078125" y="52">
-            {' '}
-            QUBIT
-          </tspan>
-        </text>
-      </g>
-      <g id="Group" transform="translate(40.000000, 360.000000)">
-        <rect id="Rectangle-36" x="0" y="0" width="420" height="35"></rect>
-        <text
-          id="captionText.primary"
-          fontFamily="Roboto"
-          fontSize="30"
-          fontWeight="500"
-          letterSpacing="1.5"
-          fill="#fff"
-          data-text-alignment="C"
-          fontStyle="normal"
-        >
-          <tspan x="210" y="167.5"></tspan>
-        </text>
-      </g>
+      {titleVisible && (
+        <Fragment>
+          <g id="Group-2" transform="translate(40.000000, 280.000000)">
+            <rect id="Rectangle-35" x="0" y="0" width="420" height="60"></rect>
+            <text
+              id="headerText.primary"
+              fontFamily="Roboto"
+              fontSize="60"
+              fontWeight="500"
+              line-spacing="60"
+              letterSpacing="3"
+              fill="#fff"
+              data-text-alignment="C"
+              fontStyle="normal"
+            >
+              <tspan x="115.078125" y="52">
+                {' '}
+                QUBIT
+              </tspan>
+            </text>
+          </g>
+          <g id="Group" transform="translate(40.000000, 360.000000)">
+            <rect id="Rectangle-36" x="0" y="0" width="420" height="35"></rect>
+            <text
+              id="captionText.primary"
+              fontFamily="Roboto"
+              fontSize="30"
+              fontWeight="500"
+              letterSpacing="1.5"
+              fill="#fff"
+              data-text-alignment="C"
+              fontStyle="normal"
+            >
+              <tspan x="210" y="167.5"></tspan>
+            </text>
+          </g>
+        </Fragment>
+      )}
     </g>
   </svg>
 )

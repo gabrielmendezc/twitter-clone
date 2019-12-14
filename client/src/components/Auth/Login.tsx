@@ -50,8 +50,6 @@ const Login: FC = () => {
     history.push('/')
   }
 
-  console.log(loading)
-
   return (
     <SC.AuthWrapper>
       <h1>Welcome back!</h1>

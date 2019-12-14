@@ -1,12 +1,13 @@
 import React, { FC, useState, useEffect, Fragment } from 'react'
 import Routes from './components/Routes'
-import Loader from './components/Loader'
 import { useHistory } from 'react-router-dom'
-import NavbarUnauth from './components/Navbar/Unauth'
 import { setAccessToken } from './utils/accessToken'
+import { Logo } from './components/Logo'
+import { getRandomLoadingStatement } from './utils/randomLoadingStatement'
 interface Props {}
 
 const App: FC<Props> = () => {
+  const loadingStatement = getRandomLoadingStatement()
   const [loading, setLoading] = useState(true)
   const history = useHistory()
   useEffect(() => {
@@ -33,9 +34,9 @@ const App: FC<Props> = () => {
   if (loading) {
     return (
       <Fragment>
-        <NavbarUnauth />
         <div id="initial-loader">
-          <Loader />
+          <Logo titleVisible={false} width="350" />
+          <h1>{loadingStatement}</h1>
         </div>
       </Fragment>
     )
