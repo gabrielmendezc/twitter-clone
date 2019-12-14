@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
 export const Main = styled.main`
-  margin-top: 70px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 `

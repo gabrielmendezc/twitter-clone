@@ -1,11 +1,12 @@
 import React, { FC, useState, FormEvent } from 'react'
-import * as SC from '../Home/styles'
+import * as SC from './styles'
 import { Link, useHistory } from 'react-router-dom'
 import Input from '../Input'
 import { useMutation } from 'react-apollo'
 import { LOGIN } from '../../graphql/mutations'
 import { ME } from '../../graphql/queries'
 import { setAccessToken } from '../../utils/accessToken'
+import { FormGroup } from '../Input/styles'
 
 const Login: FC = () => {
   const [loginData, setLoginData] = useState({
@@ -49,34 +50,42 @@ const Login: FC = () => {
   }
 
   return (
-    <SC.Form onSubmit={handleSubmit}>
-      <Input
-        onChange={handleChange}
-        value={username}
-        name="username"
-        isOnWhiteBackground
-        type="text"
-        placeholder="Username"
-        required
-      />
-      <Input
-        onChange={handleChange}
-        value={password}
-        name="password"
-        isOnWhiteBackground
-        type="password"
-        placeholder="Password"
-        required
-      />
-      <Link to="/auth/forgot-password">Forgot your password?</Link>
-      <Link to="/">go here</Link>
-      <div className="or">
-        <div></div>
-        <small>OR</small>
-        <div></div>
-      </div>
-      <button type="submit">Login</button>
-    </SC.Form>
+    <SC.AuthWrapper>
+      <h1>Welcome back!</h1>
+      <p>We're so glad to see you again!</p>
+      <SC.LoginForm onSubmit={handleSubmit}>
+        <FormGroup>
+          <label htmlFor="username">Username</label>
+          <Input
+            onChange={handleChange}
+            value={username}
+            name="username"
+            id="username"
+            isOnWhiteBackground
+            type="text"
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <label htmlFor="password">Password</label>
+          <Input
+            onChange={handleChange}
+            value={password}
+            name="password"
+            isOnWhiteBackground
+            id="password"
+            type="password"
+            required
+          />
+        </FormGroup>
+        <Link to="/auth/forgot-password">Forgot your password?</Link>
+        <button type="submit">Log in</button>
+        <div>
+          <span>Don't have an account?</span>{' '}
+          <Link to="/register">Register</Link>
+        </div>
+      </SC.LoginForm>
+    </SC.AuthWrapper>
   )
 }
 

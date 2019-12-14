@@ -27,6 +27,17 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', Arial, sans-serif;
   }
 
+  a {
+    text-decoration: none;
+    font-size: 1.4rem;
+  }
+
+  div#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
   div#initial-loader {
     min-height: 100vh;
     display: flex;

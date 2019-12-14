@@ -89,7 +89,7 @@ export const NavbarAuth = styled.nav`
 `
 
 export const NavbarUnauth = styled.header`
-  background-color: var(--complementary-1);
+  background-color: transparent;
   min-height: 60px;
   position: fixed;
   top: 0;
@@ -112,6 +112,7 @@ export const NavbarUnauth = styled.header`
   @media screen and (min-width: 768px) {
     min-height: 100px;
     justify-content: space-evenly;
+    background-color: var(--complementary-1);
 
     h1 {
       font-size: 3rem;
