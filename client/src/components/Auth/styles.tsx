@@ -7,31 +7,11 @@ export const AuthWrapper = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(
-    50deg,
-    var(--complementary-1) 25%,
-    var(--complementary-2)
-  );
 
   & > h1 {
-    margin-bottom: 0.75em;
-    font-size: 2.5rem;
-    color: rgb(230, 230, 230);
-    font-weight: 100;
-  }
-
-  & > h1 + p {
     font-size: 2rem;
-    color: var(--complementary-3);
-    background: linear-gradient(
-      -50deg,
-      var(--complementary-4) 25%,
-      var(--complementary-3)
-    );
+    color: var(--complementary-1);
     font-weight: bold;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 `
 
@@ -41,7 +21,7 @@ export const LoginForm = styled.form`
 
   & > a:first-of-type {
     display: block;
-    color: var(--complementary-3);
+    color: var(--complementary-4);
     font-size: 1.5rem;
   }
 
@@ -60,11 +40,7 @@ export const LoginForm = styled.form`
     justify-content: center;
     border: none;
     margin-top: 1.5em;
-    background-image: linear-gradient(
-      -50deg,
-      var(--complementary-4) 25%,
-      var(--complementary-3)
-    );
+    background-color: var(--complementary-1);
     position: relative;
     font-size: 1.7rem;
     color: white;
@@ -77,12 +53,12 @@ export const LoginForm = styled.form`
     & + div {
       margin-top: 1.25em;
       span {
-        font-size: 1.4rem;
-        color: white;
+        font-size: 1.5rem;
+        color: black;
       }
 
       a {
-        color: var(--complementary-3);
+        color: var(--complementary-4);
         font-size: 1.5rem;
       }
     }

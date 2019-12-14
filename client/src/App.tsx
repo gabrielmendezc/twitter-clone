@@ -3,11 +3,9 @@ import Routes from './components/Routes'
 import { useHistory } from 'react-router-dom'
 import { setAccessToken } from './utils/accessToken'
 import { Logo } from './components/Logo'
-import { getRandomLoadingStatement } from './utils/randomLoadingStatement'
 interface Props {}
 
 const App: FC<Props> = () => {
-  const loadingStatement = getRandomLoadingStatement()
   const [loading, setLoading] = useState(true)
   const history = useHistory()
   useEffect(() => {
@@ -36,7 +34,6 @@ const App: FC<Props> = () => {
       <Fragment>
         <div id="initial-loader">
           <Logo titleVisible={false} width="350" />
-          <h1>{loadingStatement}</h1>
         </div>
       </Fragment>
     )

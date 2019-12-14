@@ -69,8 +69,7 @@ const Login: FC = () => {
 
   return (
     <SC.AuthWrapper>
-      <h1>Welcome back!</h1>
-      <p>We're so glad to see you again!</p>
+      <h1>We're so glad to see you again!</h1>
       <SC.LoginForm onSubmit={handleSubmit}>
         <FormGroup>
           <label htmlFor="username">Username</label>

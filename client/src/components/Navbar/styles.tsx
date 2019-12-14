@@ -1,87 +1,105 @@
 import styled from 'styled-components'
 
+export const ProfilePictureWrapper = styled.div`
+  min-width: 30px;
+  min-height: 30px;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+`
+
 export const NavbarAuth = styled.nav`
-  min-height: 70px;
   margin-bottom: 10px;
+  border-bottom: 1px solid rgb(230, 236, 240);
 
   svg {
-    fill: var(--complementary-1);
-    width: 27px;
+    width: 25px;
   }
 
   ul.upper-nav {
-    display: flex;
-    align-items: center;
-    padding: 1.5em 2em;
-    justify-content: space-between;
-    background-color: var(--complementary-1);
-
     svg {
-      fill: white;
-      flex-basis: 33.3%;
+      fill: var(--complementary-4);
     }
-
-    li {
-      display: inline;
-    }
-
-    .searchbar {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-      display: flex;
-
-      input {
-        padding: 0 0.4em 0.3em 0.4em;
-        background: transparent;
-        border: none;
-        outline: none;
-        font-size: 1.5rem;
-        color: white;
-        margin-left: 5px;
-
-        &::placeholder {
-          color: rgba(255, 255, 255, 0.75);
-        }
-      }
-
-      svg {
-        width: 17px;
-        margin-bottom: 6px;
-      }
-
-      /* @media screen and (max-width: 350px) {
-        input {
-          width: 135px;
-        }
-      } */
-    }
-  }
-
-  ul.lower-nav {
-    padding: 1em 0;
     display: flex;
+    min-height: 55px;
     align-items: center;
-    justify-content: space-evenly;
+    padding: 0 2em;
+    justify-content: space-between;
 
     li {
       display: inline;
 
       a {
-        position: relative;
+        padding: 7px;
+        border-radius: 50%;
+        width: 37px;
+        display: flex;
+        transition: background-color 300ms ease-in-out;
+        align-items: center;
+        justify-content: center;
+        height: 37px;
 
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -5px;
-          right: 0;
-          background-color: var(--complementary-1);
-          height: 2px;
-          width: 0%;
-          transition: all 250ms ease-in-out;
+        &:hover {
+          background-color: var(--complementary-3);
         }
+      }
 
-        &.active::after {
-          left: 0;
-          width: 100%;
+      &:first-of-type {
+        display: flex;
+        align-items: center;
+
+        h1 {
+          margin-left: 0.75em;
+          font-size: 1.9rem;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-weight: 900;
+        }
+      }
+    }
+  }
+
+  ul.lower-nav {
+    position: fixed;
+    min-height: 55px;
+    padding: 0 3em;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    border-top: 1px solid rgb(230, 236, 240);
+    align-items: center;
+    justify-content: space-between;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 7px;
+        border-radius: 50%;
+        justify-content: center;
+
+        transition: background-color 300ms ease-in-out;
+
+        &:hover {
+          background-color: var(--complementary-3);
+        }
+        svg {
+          fill: var(--complementary-4);
+        }
+        &.active {
+          background-color: var(--complementary-3);
         }
       }
     }

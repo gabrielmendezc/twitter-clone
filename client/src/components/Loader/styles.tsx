@@ -1,73 +1,46 @@
 import styled from 'styled-components'
+import { ILoaderProps } from '.'
 
-export const SpinnerWrapper = styled.div`
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
+export const SpinnerWrapper = styled.div<ILoaderProps>`
+  border-radius: 50%;
+  width: ${props => (props.width ? props.width : '26px')};
+  height: ${props => (props.width ? props.width : '26px')};
 
-  .dot {
-    width: 11px;
-    height: 11px;
-    background: #fff;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 3.25px solid var(--complementary-4);
+  border-right: 3.25px solid var(--complementary-4);
+  border-bottom: 3.25px solid var(--complementary-4);
+  border-left: 3.25px solid var(--complementary-3);
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+  &::after {
     border-radius: 50%;
-    animation: dot 2.8s infinite;
+    width: ${props => (props.width ? props.width : '26px')};
+    height: ${props => (props.width ? props.width : '26px')};
   }
 
-  .dots {
-    transform: translateX(0);
-    animation: dots 2.8s infinite;
-
-    span {
-      display: block;
-      float: left;
-      width: 11px;
-      height: 11px;
-      margin-left: 5px;
-      background: #fff;
-      border-radius: 50%;
+  @-webkit-keyframes load8 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   }
-
-  @-moz-keyframes dot {
-    50% {
-      transform: translateX(48px);
+  @keyframes load8 {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
     }
-  }
-  @-webkit-keyframes dot {
-    50% {
-      transform: translateX(48px);
-    }
-  }
-  @-o-keyframes dot {
-    50% {
-      transform: translateX(48px);
-    }
-  }
-  @keyframes dot {
-    50% {
-      transform: translateX(48px);
-    }
-  }
-  @-moz-keyframes dots {
-    50% {
-      transform: translateX(-21px);
-    }
-  }
-  @-webkit-keyframes dots {
-    50% {
-      transform: translateX(-21px);
-    }
-  }
-  @-o-keyframes dots {
-    50% {
-      transform: translateX(-21px);
-    }
-  }
-  @keyframes dots {
-    50% {
-      transform: translateX(-21px);
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 `
