@@ -15,14 +15,14 @@ const NavbarAuth: FC = () => {
             {data && (
               <img
                 src={data.me.profilePicture}
-                alt={`${data.me.username}'s profile picture`}
+                alt={`${data.me.username}'s profile`}
               />
             )}
           </SC.ProfilePictureWrapper>
           <h1>Inicio</h1>
         </li>
         <li>
-          <NavLink exact to="/picture/new">
+          <NavLink exact to="/settings">
             <svg viewBox="0 0 24 24">
               <g>
                 <path d="M12 8.21c-2.09 0-3.79 1.7-3.79 3.79s1.7 3.79 3.79 3.79 3.79-1.7 3.79-3.79-1.7-3.79-3.79-3.79zm0 6.08c-1.262 0-2.29-1.026-2.29-2.29S10.74 9.71 12 9.71s2.29 1.026 2.29 2.29-1.028 2.29-2.29 2.29z"></path>
@@ -52,7 +52,7 @@ const NavbarAuth: FC = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink exact to="/account/settings">
+          <NavLink exact to="/notifications">
             <svg viewBox="0 0 24 24">
               <g>
                 <path d="M21.697 16.468c-.02-.016-2.14-1.64-2.103-6.03.02-2.533-.812-4.782-2.347-6.334-1.375-1.393-3.237-2.164-5.242-2.172h-.013c-2.004.008-3.866.78-5.242 2.172-1.534 1.553-2.367 3.802-2.346 6.333.037 4.332-2.02 5.967-2.102 6.03-.26.194-.366.53-.265.838s.39.515.713.515h4.494c.1 2.544 2.188 4.587 4.756 4.587s4.655-2.043 4.756-4.587h4.494c.324 0 .61-.208.712-.515s-.005-.644-.265-.837zM12 20.408c-1.466 0-2.657-1.147-2.756-2.588h5.512c-.1 1.44-1.29 2.587-2.756 2.587z"></path>

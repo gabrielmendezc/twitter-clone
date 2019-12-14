@@ -1,24 +1,29 @@
 import styled from 'styled-components'
 
-export const ProfilePictureWrapper = styled.div`
-  min-width: 30px;
-  min-height: 30px;
-  background-color: rgba(0, 0, 0, 0.35);
+interface IProfilePictureWrapperProps {
+  width?: string
+}
+
+export const ProfilePictureWrapper = styled.div<IProfilePictureWrapperProps>`
+  min-width: ${props => (props.width ? props.width : '27px')};
+  min-height: ${props => (props.width ? props.width : '27px')};
+  width: ${props => (props.width ? props.width : '27px')};
+  height: ${props => (props.width ? props.width : '27px')};
+  background-color: red;
   border-radius: 50%;
   display: flex;
   align-items: center;
+  border: 1px solid rgb(204, 214, 221);
   justify-content: center;
 
   img {
-    width: 30px;
-    height: 30px;
+    border-radius: 50%;
+    width: ${props => (props.width ? props.width : '27px')};
+    height: ${props => (props.width ? props.width : '27px')};
   }
 `
 
 export const NavbarAuth = styled.nav`
-  margin-bottom: 10px;
-  border-bottom: 1px solid rgb(230, 236, 240);
-
   svg {
     width: 25px;
   }
@@ -28,6 +33,12 @@ export const NavbarAuth = styled.nav`
       fill: var(--complementary-4);
     }
     display: flex;
+    border-bottom: 1px solid rgb(204, 214, 221);
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
     min-height: 55px;
     align-items: center;
     padding: 0 2em;
@@ -68,12 +79,13 @@ export const NavbarAuth = styled.nav`
   ul.lower-nav {
     position: fixed;
     min-height: 55px;
+    background-color: white;
     padding: 0 3em;
     bottom: 0;
     left: 0;
     width: 100%;
     display: flex;
-    border-top: 1px solid rgb(230, 236, 240);
+    border-top: 1px solid rgb(204, 214, 221);
     align-items: center;
     justify-content: space-between;
 

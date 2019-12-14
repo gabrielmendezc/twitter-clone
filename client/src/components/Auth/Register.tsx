@@ -1,6 +1,6 @@
 import React, { FC, useState, FormEvent, Fragment } from 'react'
-import * as SC from '../Home/styles'
 import Input from '../Input'
+import { LoginForm } from './styles'
 
 const Register: FC = () => {
   const [registerData, setRegisterData] = useState({
@@ -23,7 +23,7 @@ const Register: FC = () => {
   return (
     <Fragment>
       <h2>Create an account</h2>
-      <SC.Form onSubmit={handleRegister}>
+      <LoginForm onSubmit={handleRegister}>
         <Input
           name="username"
           value={username}
@@ -66,7 +66,7 @@ const Register: FC = () => {
         >
           Sign up
         </button>
-      </SC.Form>
+      </LoginForm>
     </Fragment>
   )
 }

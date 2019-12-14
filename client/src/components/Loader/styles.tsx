@@ -15,8 +15,8 @@ export const SpinnerWrapper = styled.div<ILoaderProps>`
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
-  -webkit-animation: load8 1.1s infinite linear;
-  animation: load8 1.1s infinite linear;
+  -webkit-animation: load8 0.7s infinite linear;
+  animation: load8 0.7s infinite linear;
   &::after {
     border-radius: 50%;
     width: ${props => (props.width ? props.width : '26px')};
