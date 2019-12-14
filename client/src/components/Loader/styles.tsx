@@ -1,42 +1,73 @@
 import styled from 'styled-components'
-import { ILoaderProps } from '.'
 
-export const SpinnerWrapper = styled.div<ILoaderProps>`
+export const SpinnerWrapper = styled.div`
+  width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  width: ${props => (props.width ? props.width : '30px')};
-  height: ${props => (props.width ? props.width : '30px')};
+  background: transparent;
 
-  & > div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    border: 3px solid var(--dominant-clr);
+  .dot {
+    width: 11px;
+    height: 11px;
+    background: #fff;
     border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: var(--dominant-clr) transparent transparent transparent;
+    animation: dot 2.8s infinite;
   }
 
-  & > div:nth-child(1) {
-    animation-delay: -0.45s;
-  }
-  & > div:nth-child(2) {
-    animation-delay: -0.3s;
-  }
-  & > div:nth-child(3) {
-    animation-delay: -0.15s;
-  }
+  .dots {
+    transform: translateX(0);
+    animation: dots 2.8s infinite;
 
-  @keyframes lds-ring {
-    0% {
-      transform: rotate(0deg);
+    span {
+      display: block;
+      float: left;
+      width: 11px;
+      height: 11px;
+      margin-left: 5px;
+      background: #fff;
+      border-radius: 50%;
     }
-    100% {
-      transform: rotate(360deg);
+  }
+
+  @-moz-keyframes dot {
+    50% {
+      transform: translateX(48px);
+    }
+  }
+  @-webkit-keyframes dot {
+    50% {
+      transform: translateX(48px);
+    }
+  }
+  @-o-keyframes dot {
+    50% {
+      transform: translateX(48px);
+    }
+  }
+  @keyframes dot {
+    50% {
+      transform: translateX(48px);
+    }
+  }
+  @-moz-keyframes dots {
+    50% {
+      transform: translateX(-21px);
+    }
+  }
+  @-webkit-keyframes dots {
+    50% {
+      transform: translateX(-21px);
+    }
+  }
+  @-o-keyframes dots {
+    50% {
+      transform: translateX(-21px);
+    }
+  }
+  @keyframes dots {
+    50% {
+      transform: translateX(-21px);
     }
   }
 `

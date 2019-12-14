@@ -1,20 +1,26 @@
 import React, { FC } from 'react'
 import * as SC from './styles'
 import Input from '../Input'
+import { Logo } from '../Logo'
 
 const NavbarUnauth: FC = () => {
   return (
     <SC.NavbarUnauth>
-      <h1>Website Logo</h1>
+      <Logo />
       <form id="login">
         <div className="form-group">
-          <Input placeholder="Username" type="text" id="username" required />
+          <Input
+            placeholder="Username"
+            type="text"
+            id="usernameHeader"
+            required
+          />
         </div>
         <div className="form-group">
           <Input
             placeholder="Password"
             type="password"
-            id="password"
+            id="passwordHeader"
             required
           />
         </div>

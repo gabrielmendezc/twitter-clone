@@ -6,11 +6,13 @@ export interface ILoaderProps {
 }
 
 const Loader: FC<ILoaderProps> = ({ width }) => (
-  <SC.SpinnerWrapper width={width}>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+  <SC.SpinnerWrapper>
+    <span className="dot"></span>
+    <div className="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </SC.SpinnerWrapper>
 )
 

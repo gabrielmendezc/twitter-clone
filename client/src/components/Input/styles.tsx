@@ -6,6 +6,13 @@ export const Input = styled.input<IInputProps>`
   font-size: 1.6rem;
   border: none;
   border-radius: 3px;
+  transition: border 300ms ease-in-out;
+  outline: none;
+  border: 0px solid black;
+
+  &:focus {
+    border: 4px solid var(--complementary-3);
+  }
 `
 
 export const FormGroup = styled.div`

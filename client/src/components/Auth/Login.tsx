@@ -7,13 +7,14 @@ import { LOGIN } from '../../graphql/mutations'
 import { ME } from '../../graphql/queries'
 import { setAccessToken } from '../../utils/accessToken'
 import { FormGroup } from '../Input/styles'
+import Loader from '../Loader'
 
 const Login: FC = () => {
   const [loginData, setLoginData] = useState({
     username: '',
     password: ''
   })
-  const [login] = useMutation(LOGIN)
+  const [login, { loading }] = useMutation(LOGIN)
   const history = useHistory()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,6 +50,8 @@ const Login: FC = () => {
     history.push('/')
   }
 
+  console.log(loading)
+
   return (
     <SC.AuthWrapper>
       <h1>Welcome back!</h1>
@@ -61,7 +64,6 @@ const Login: FC = () => {
             value={username}
             name="username"
             id="username"
-            isOnWhiteBackground
             type="text"
             required
           />
@@ -72,14 +74,13 @@ const Login: FC = () => {
             onChange={handleChange}
             value={password}
             name="password"
-            isOnWhiteBackground
             id="password"
             type="password"
             required
           />
         </FormGroup>
         <Link to="/auth/forgot-password">Forgot your password?</Link>
-        <button type="submit">Log in</button>
+        <button type="submit">{loading ? <Loader /> : 'Log in'}</button>
         <div>
           <span>Don't have an account?</span>{' '}
           <Link to="/register">Register</Link>

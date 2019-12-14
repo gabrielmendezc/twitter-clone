@@ -16,7 +16,7 @@ export const AuthWrapper = styled.section`
   & > h1 {
     margin-bottom: 0.75em;
     font-size: 2.5rem;
-    color: white;
+    color: rgb(230, 230, 230);
     font-weight: 100;
   }
 
@@ -47,8 +47,12 @@ export const LoginForm = styled.form`
 
   button[type='submit'] {
     width: 100%;
-    padding: 1em;
+    cursor: pointer;
     border-radius: 3px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     margin-top: 1.5em;
     background-image: linear-gradient(
@@ -56,8 +60,14 @@ export const LoginForm = styled.form`
       var(--complementary-4) 25%,
       var(--complementary-3)
     );
+    position: relative;
     font-size: 1.7rem;
     color: white;
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
 
     & + div {
       margin-top: 1.25em;
