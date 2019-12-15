@@ -7,7 +7,7 @@ export const Main = styled.main`
   padding: 55px 0;
 
   & > section {
-    & > h1 {
+    & > h1#interesting_things {
       padding: 0.75em 2em 0.75em 0.75em;
       font-size: 1.65rem;
       background-color: white;
