@@ -15,17 +15,21 @@ interface IPostProps {
 export const Post: FC<IPostProps> = ({ author, body, postedAt }) => {
   return (
     <SC.PostWrapper>
-      <div>
-        <ProfilePictureWrapper width="40px">
+      <SC.PostProfilePictureBlock>
+        <ProfilePictureWrapper width="43px">
           <img src={author.profilePicture} alt={author.username} />
         </ProfilePictureWrapper>
-        <h1>@{author.username}</h1>
-        <span>·</span>
-        <time dateTime={postedAt.toString()}>
-          {formatDistanceToNow(postedAt)}
-        </time>
+      </SC.PostProfilePictureBlock>
+      <div>
+        <SC.PostInformation>
+          <h1>@{author.username}</h1>
+          <span>·</span>
+          <time dateTime={postedAt.toString()}>
+            {formatDistanceToNow(postedAt)}
+          </time>
+        </SC.PostInformation>
+        <p>{body}</p>
       </div>
-      <p>{body}</p>
     </SC.PostWrapper>
   )
 }

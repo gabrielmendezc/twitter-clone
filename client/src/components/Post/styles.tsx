@@ -1,30 +1,31 @@
 import styled from 'styled-components'
 
-export const PostWrapper = styled.article`
-  display: flex;
-  flex-direction: column;
-  padding: 0 2em;
+export const PostProfilePictureBlock = styled.div`
+  margin-right: 1.5rem;
+`
 
-  & > p {
-    margin-left: calc(40px + 1rem);
-    font-size: 1.4rem;
+export const PostInformation = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.18rem;
+
+  span {
+    font-size: 3rem;
   }
 
-  & > div {
-    display: flex;
-    align-items: center;
-    font-size: 1.35rem;
+  span,
+  time {
+    margin-left: 0.55rem;
+    color: #6a6c6e;
+  }
+`
 
-    h1 {
-      margin-right: 0.5em;
-    }
+export const PostWrapper = styled.article`
+  display: flex;
+  padding: 1em 2em;
+  border-bottom: 1px solid rgb(230, 236, 240);
 
-    span {
-      margin-right: 0.5em;
-    }
-
-    & > div {
-      margin-right: 1rem;
-    }
+  & > p {
+    font-size: 1.4rem;
   }
 `

@@ -9,11 +9,10 @@ export const ProfilePictureWrapper = styled.div<IProfilePictureWrapperProps>`
   min-height: ${props => (props.width ? props.width : '27px')};
   width: ${props => (props.width ? props.width : '27px')};
   height: ${props => (props.width ? props.width : '27px')};
-  background-color: red;
+  background-color: rgb(204, 214, 221);
   border-radius: 50%;
   display: flex;
   align-items: center;
-  border: 1px solid rgb(204, 214, 221);
   justify-content: center;
 
   img {
