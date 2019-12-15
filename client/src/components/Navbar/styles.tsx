@@ -23,6 +23,8 @@ export const ProfilePictureWrapper = styled.div<IProfilePictureWrapperProps>`
 `
 
 export const NavbarAuth = styled.nav`
+  position: relative;
+  z-index: 9999;
   svg {
     width: 25px;
   }
@@ -124,7 +126,7 @@ export const NavbarUnauth = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 99;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
