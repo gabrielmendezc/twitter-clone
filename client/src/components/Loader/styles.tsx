@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 import { ILoaderProps } from '.'
 
+export const MiddleScreen = styled.div`
+  min-height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 export const SpinnerWrapper = styled.div<ILoaderProps>`
   border-radius: 50%;
   width: ${props => (props.width ? props.width : '26px')};

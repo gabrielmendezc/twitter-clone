@@ -2,7 +2,7 @@ import React, { FC, useState, useMemo } from 'react'
 import { NavbarContext } from '.'
 
 export const NavbarProvider: FC = ({ children }) => {
-  const [title, setTitle] = useState('')
+  const [title, setTitle] = useState('Home')
   const [canGoBack, setCanGoBack] = useState(false)
 
   const memoizedContextValue = useMemo(

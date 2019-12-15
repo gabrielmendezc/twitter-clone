@@ -5,13 +5,16 @@ import { ApolloProvider } from 'react-apollo'
 import { GlobalStyles } from './globalStyles'
 import client from './store'
 import { BrowserRouter } from 'react-router-dom'
+import { NavbarProvider } from './context/Navbar/Provider'
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <GlobalStyles />
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <NavbarProvider>
+      <GlobalStyles />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </NavbarProvider>
   </ApolloProvider>,
   document.getElementById('root')
 )

@@ -6,7 +6,12 @@ import Home from '../Home'
 import Login from '../Auth/Login'
 import Register from '../Auth/Register'
 import { ProtectedRoute } from '../ProtectedRoute'
+import { AdminRoute } from '../ProtectedRoute/Admin'
 import { PublicRoute } from '../PublicRoute'
+import { AdminDashboard } from '../AdminDashboard'
+import { NotFound } from '../404'
+import Profile from '../Profile'
+import AccountSettings from '../Account/Settings'
 
 const Routes: FC = () => (
   <Fragment>
@@ -15,19 +20,11 @@ const Routes: FC = () => (
       <Switch>
         <PublicRoute path="/login" exact component={Login} />
         <PublicRoute path="/register" exact component={Register} />
-        <ProtectedRoute
-          restrictedToAdmin={false}
-          path="/"
-          exact
-          component={Home}
-        />
-        <ProtectedRoute
-          restrictedToAdmin
-          path="/admin_dashboard"
-          exact
-          component={<h1>Admin Dashboard</h1>}
-        />
-        <Route render={() => <h1>404...</h1>} />
+        <ProtectedRoute path="/" exact component={Home} />
+        <ProtectedRoute path="/profile" exact component={Profile} />
+        <ProtectedRoute path="/settings" exact component={AccountSettings} />
+        <AdminRoute path="/admin_dashboard" exact component={AdminDashboard} />
+        <Route component={NotFound} />
         {/* Create 404 component here and in ProtectedRoute */}
       </Switch>
     </Main>
