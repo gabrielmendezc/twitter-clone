@@ -21,11 +21,10 @@ const Routes: FC = () => (
         <PublicRoute path="/login" exact component={Login} />
         <PublicRoute path="/register" exact component={Register} />
         <ProtectedRoute path="/" exact component={Home} />
-        <ProtectedRoute path="/profile" exact component={Profile} />
+        <ProtectedRoute path="/profile" component={Profile} />
         <ProtectedRoute path="/settings" exact component={AccountSettings} />
         <AdminRoute path="/admin_dashboard" exact component={AdminDashboard} />
         <Route component={NotFound} />
-        {/* Create 404 component here and in ProtectedRoute */}
       </Switch>
     </Main>
   </Fragment>

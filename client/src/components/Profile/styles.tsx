@@ -6,98 +6,73 @@ export const JustifyCenter = styled.div`
 `
 
 export const Image = styled.img`
-  width: 128px;
-  height: 128px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   object-fit: cover;
-`
-
-export const ProfilePictureWrapper = styled.div`
-  margin-bottom: 2rem;
-
-  position: relative;
-  form {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-
-    label {
-      position: absolute;
-      right: -5px;
-      bottom: 13px;
-      z-index: 22;
-      cursor: pointer;
-      border-radius: 50%;
-      padding: 10px;
-      width: 45px;
-      height: 45px;
-      display: flex;
-      justify-content: center;
-      border: 1px solid var(--complementary-1);
-      background-color: white;
-      align-items: center;
-    }
-  }
-
-  input {
-    opacity: 0;
-    width: 0.1px;
-    height: 0.1px;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-  }
-
-  svg {
-    width: 30px;
-    height: 30px;
-    fill: var(--complementary-1);
-  }
+  background-color: rgb(204, 214, 221);
 `
 
 export const ProfileWrapper = styled.section`
-  & > h1:first-of-type {
-    font-size: 2rem;
+  & > .profile-edit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+      font-size: 2rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 900;
+    }
+
+    button {
+      padding: 0.8em 1.5em;
+      font-weight: bold;
+      border-radius: 30px;
+      border: 1px solid var(--complementary-4);
+      background-color: transparent;
+      color: var(--complementary-4);
+    }
+    margin-bottom: 3em;
   }
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0 2em 2em 2em;
+  padding: 2em;
 `
 
 export const Profile = styled.article`
-  .btn {
-    padding: 0.7em;
-    font-size: 1.55rem;
-    background-color: transparent;
-    cursor: pointer;
-    border-radius: 3px;
-    border: none;
-    transition: all 150ms ease-in-out;
-    &.btn-danger {
-      color: red;
-      border: 1px solid #ff3434;
+  display: flex;
 
-      &:hover {
-        background-color: red;
-        color: white;
-      }
+  .profile-details {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h1 {
+      font-size: 1.8rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 900;
+      margin-bottom: 12px;
     }
 
-    &.btn-action {
-      border: 1px solid rgba(0, 0, 0, 0.3);
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.15);
+    time {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      color: rgb(101, 119, 134);
+      svg {
+        margin-right: 6px;
+        width: 20px;
+        fill: currentColor;
       }
     }
   }
-
-  display: flex;
-  flex-direction: column;
 
   & > h1 {
-    margin-bottom: 2rem;
-    font-size: 2.35rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 900;
+    font-size: 1.9rem;
   }
+`
+
+export const ProfileTabsWrapper = styled.article`
+  margin-top: 32px;
 `

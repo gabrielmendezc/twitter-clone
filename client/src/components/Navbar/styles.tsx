@@ -71,7 +71,7 @@ export const NavbarAuth = styled.nav`
 
         h1 {
           margin-left: 0.75em;
-          font-size: 1.77rem;
+          font-size: 1.9rem;
           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
           font-weight: 900;
         }

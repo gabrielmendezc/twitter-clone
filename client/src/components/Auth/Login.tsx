@@ -10,6 +10,7 @@ import { FormGroup } from '../Input/styles'
 import Loader from '../Loader'
 import GraphQLError from '../Error/GraphQLError'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle'
+import { JustifyCenter } from '../Profile/styles'
 
 const Login: FC = () => {
   useDocumentTitle('Iniciar sesión en Tweetair / Tweetair')
@@ -101,7 +102,15 @@ const Login: FC = () => {
         <div className="errors-wrapper">
           {error && <Fragment>{errors}</Fragment>}
         </div>
-        <button type="submit">{loading ? <Loader /> : 'Log in'}</button>
+        <button type="submit">
+          {loading ? (
+            <JustifyCenter>
+              <Loader />
+            </JustifyCenter>
+          ) : (
+            'Log in'
+          )}
+        </button>
         <div className="sub-links">
           <Link to="/auth/forgot-password">Forgot your password?</Link>
           <span>·</span>
