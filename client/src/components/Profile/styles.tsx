@@ -35,7 +35,7 @@ export const ProfileWrapper = styled.section`
     margin-bottom: 3em;
   }
   flex-direction: column;
-  padding: 2em;
+  padding: 2rem;
 `
 
 export const Profile = styled.article`
@@ -74,5 +74,5 @@ export const Profile = styled.article`
 `
 
 export const ProfileTabsWrapper = styled.article`
-  margin-top: 32px;
+  margin-top: 40px;
 `

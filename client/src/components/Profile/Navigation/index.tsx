@@ -1,22 +1,29 @@
 import React from 'react'
 import { NavLink, useRouteMatch } from 'react-router-dom'
+import * as SC from './styles'
 
 export const ProfileNavigation = () => {
   const { path } = useRouteMatch()
 
   return (
-    <nav>
+    <SC.ProfileNavigation>
       <ul>
         <li>
-          <NavLink to={`${path}/posts`}>Posts</NavLink>
+          <NavLink exact to={`${path}`}>
+            Posts
+          </NavLink>
         </li>
         <li>
-          <NavLink to={`${path}/followers`}>Followers</NavLink>
+          <NavLink exact to={`${path}/followers`}>
+            Followers
+          </NavLink>
         </li>
         <li>
-          <NavLink to={`${path}/following`}>Following</NavLink>
+          <NavLink exact to={`${path}/following`}>
+            Following
+          </NavLink>
         </li>
       </ul>
-    </nav>
+    </SC.ProfileNavigation>
   )
 }

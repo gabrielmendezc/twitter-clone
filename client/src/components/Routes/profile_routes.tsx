@@ -6,7 +6,7 @@ export const ProfileRoutes = () => {
 
   return (
     <Switch>
-      <Route path={`${path}/posts`} exact render={() => <h1>Posts</h1>} />
+      <Route path={`${path}`} exact render={() => <h1>Posts</h1>} />
       <Route
         path={`${path}/followers`}
         exact
