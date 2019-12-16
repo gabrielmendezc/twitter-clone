@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ProfileNavigation = styled.nav`
-  margin: 0 -2rem 16px -2rem;
+  margin: 0 -2rem 16px;
   border-bottom: 1px solid rgb(230, 236, 240);
   min-height: 45px;
   display: flex;
