@@ -9,8 +9,10 @@ import { setAccessToken } from '../../utils/accessToken'
 import { FormGroup } from '../Input/styles'
 import Loader from '../Loader'
 import GraphQLError from '../Error/GraphQLError'
+import { useDocumentTitle } from '../../hooks/useDocumentTitle'
 
 const Login: FC = () => {
+  useDocumentTitle('Iniciar sesión en Tweetair / Tweetair')
   const [loginData, setLoginData] = useState({
     username: '',
     password: ''

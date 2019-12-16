@@ -1,14 +1,10 @@
 import { useEffect } from 'react'
 
-interface IUseDocumentTitle {
-  title: string
-}
-
-export const useDocumentTitle = ({ title }: IUseDocumentTitle) => {
+export const useDocumentTitle = (title: string) => {
   const titleBeforeChange = title
   useEffect(() => {
     document.title = title
-  }, [])
+  }, [title])
 
   return { titleBeforeChange, titleAfterChange: title }
 }
