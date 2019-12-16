@@ -2,65 +2,54 @@ import styled from 'styled-components'
 
 export const AuthWrapper = styled.section`
   flex-grow: 1;
-  display: flex;
-  padding: 4.5em;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 0 3em;
+  margin-top: 90px;
 
   & > h1 {
-    font-size: 2rem;
-    color: var(--complementary-1);
-    font-weight: bold;
+    font-size: 2.25rem;
+    text-align: center;
   }
 `
 
-export const LoginForm = styled.form`
-  margin-top: 3em;
-  width: 100%;
+interface ILoginFormProps {
+  buttonActive: boolean
+}
 
-  & > a:first-of-type {
-    display: block;
-    color: var(--complementary-4);
-    font-size: 1.5rem;
-  }
-
-  strong {
-    display: block;
-    margin-bottom: 0.1em;
-  }
+export const LoginForm = styled.form<ILoginFormProps>`
+  margin-top: 32px;
 
   button[type='submit'] {
     width: 100%;
-    cursor: pointer;
-    border-radius: 3px;
-    height: 50px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    padding: 1em;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    background-color: var(--complementary-4);
+    opacity: ${props => (props.buttonActive ? 1 : 0.5)};
+    pointer-events: ${props => (props.buttonActive ? 'all' : 'none')};
+  }
+
+  .errors-wrapper {
+    margin-bottom: 2em;
+  }
+
+  .sub-links {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    margin-top: 1.5em;
-    background-color: var(--complementary-1);
-    position: relative;
-    font-size: 1.7rem;
-    color: white;
-    transition: all 300ms ease-in-out;
 
-    &:hover {
-      transform: translateY(-4px);
+    span {
+      font-size: 2.35rem;
+      margin-right: 10px;
     }
 
-    & + div {
-      margin-top: 1.25em;
-      span {
-        font-size: 1.5rem;
-        color: black;
-      }
-
-      a {
-        color: var(--complementary-4);
-        font-size: 1.5rem;
-      }
+    a {
+      margin-right: 10px;
+      color: var(--complementary-4);
     }
   }
 `

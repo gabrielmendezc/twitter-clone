@@ -2,30 +2,34 @@ import styled from 'styled-components'
 import { IInputProps } from '.'
 
 export const Input = styled.input<IInputProps>`
-  padding: 0.9em 0.7em;
-  font-size: 1.6rem;
   border: none;
-  border-radius: 3px;
-  transition: border 300ms ease-in-out;
+  background-color: transparent;
+  padding: 0.45rem 0.7rem 0.45rem 0.7rem;
   outline: none;
-  border: 0px solid black;
-  border: 2px solid var(--complementary-3);
-
-  &:focus {
-    border: 4px solid var(--complementary-3);
-  }
+  font-size: 1.9rem;
+  border-radius: 2px;
+  border-bottom: 2px solid rgb(101, 119, 134);
 `
 
 export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
-  label {
-    color: black;
-    font-size: 1.7rem;
-    margin-bottom: 0.5em;
+  border-radius: 2px;
+  background-color: rgb(245, 248, 250);
+  margin-bottom: 2em;
+
+  input:focus {
+    border-color: var(--complementary-4);
+
+    + label {
+      color: var(--complementary-4);
+    }
   }
 
-  &:not(:last-of-type) {
-    margin-bottom: 1.75em;
+  label {
+    padding: 0.7rem 0 0 0.7rem;
+    font-size: 1.5rem;
+    order: -1;
+    color: rgb(101, 119, 134);
   }
 `

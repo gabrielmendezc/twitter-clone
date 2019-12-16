@@ -70,9 +70,11 @@ const Login: FC = () => {
   return (
     <SC.AuthWrapper>
       <h1>We're so glad to see you again!</h1>
-      <SC.LoginForm onSubmit={handleSubmit}>
+      <SC.LoginForm
+        buttonActive={!!(username && password)}
+        onSubmit={handleSubmit}
+      >
         <FormGroup>
-          <label htmlFor="username">Username</label>
           <Input
             onChange={handleChange}
             value={username}
@@ -81,9 +83,9 @@ const Login: FC = () => {
             type="text"
             required
           />
+          <label htmlFor="username">Username</label>
         </FormGroup>
         <FormGroup>
-          <label htmlFor="password">Password</label>
           <Input
             onChange={handleChange}
             value={password}
@@ -92,12 +94,15 @@ const Login: FC = () => {
             type="password"
             required
           />
+          <label htmlFor="password">Password</label>
         </FormGroup>
-        {error && <Fragment>{errors}</Fragment>}
-        <Link to="/auth/forgot-password">Forgot your password?</Link>
+        <div className="errors-wrapper">
+          {error && <Fragment>{errors}</Fragment>}
+        </div>
         <button type="submit">{loading ? <Loader /> : 'Log in'}</button>
-        <div>
-          <span>Don't have an account?</span>{' '}
+        <div className="sub-links">
+          <Link to="/auth/forgot-password">Forgot your password?</Link>
+          <span>·</span>
           <Link to="/register">Register</Link>
         </div>
       </SC.LoginForm>

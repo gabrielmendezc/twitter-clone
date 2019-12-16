@@ -23,7 +23,18 @@ const Register: FC = () => {
   return (
     <Fragment>
       <h2>Create an account</h2>
-      <LoginForm onSubmit={handleRegister}>
+      <LoginForm
+        buttonActive={
+          !!(
+            username &&
+            email &&
+            password &&
+            passwordConfirm &&
+            password === passwordConfirm
+          )
+        }
+        onSubmit={handleRegister}
+      >
         <Input
           name="username"
           value={username}
